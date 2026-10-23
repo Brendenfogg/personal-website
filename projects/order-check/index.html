@@ -42,6 +42,10 @@
     ul.tight { margin: 4px 0; padding-left: 20px; }
     ul.tight li { padding: 3px 0; }
     .back { font-size: 14px; }
+    /* tighter section spacing than the home page's 80px spacer */
+    .main > .br { height: 40px; }
+    .main .anchor > p:last-child { padding-bottom: 0; }
+    figure + figure { margin-top: 26px; }
     @media (max-width: 629px) {
       table.results { font-size: 12.5px; }
     }
@@ -128,45 +132,50 @@
       <!-- how it works -->
       <div class="anchor" id="how">
         <h2 class="section">How it works</h2>
-        <svg class="diagram" viewBox="0 0 662 230" role="img" aria-label="A clip microphone streams audio to an in-restaurant server, which transcribes it, reads the spoken order, and checks it against the POS ticket before the kitchen gets it.">
-          <rect class="box accent" x="4" y="70" width="110" height="64" rx="6"/>
-          <text x="59" y="98" text-anchor="middle">Clip / mic</text>
-          <text class="muted" x="59" y="116" text-anchor="middle">listens during</text>
-          <text class="muted" x="59" y="128" text-anchor="middle">an order only</text>
+        <svg class="diagram" viewBox="0 0 700 290" role="img" aria-label="A clip microphone streams audio to an in-restaurant server, which transcribes it, reads the spoken order, and checks it against the POS ticket before the kitchen gets it. On a mismatch, the server buzzes the clip.">
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10" fill="none" stroke="#333333" stroke-width="1.5"/>
+            </marker>
+          </defs>
 
-          <line x1="114" y1="102" x2="160" y2="102"/>
-          <path d="M154 97 L160 102 L154 107"/>
+          <!-- everything is centered on y = 130 -->
+          <!-- clip -->
+          <rect class="box accent" x="10" y="95" width="130" height="70" rx="6"/>
+          <text x="75" y="121" text-anchor="middle" dominant-baseline="middle">Clip / mic</text>
+          <text class="muted" x="75" y="140" text-anchor="middle" dominant-baseline="middle">listens during</text>
+          <text class="muted" x="75" y="153" text-anchor="middle" dominant-baseline="middle">an order only</text>
 
-          <rect class="box" x="160" y="10" width="270" height="184" rx="6"/>
-          <text x="295" y="32" text-anchor="middle">In-restaurant server (Rust)</text>
-          <text x="176" y="62">1. Whisper speech-to-text</text>
-          <text class="muted" x="194" y="78">on device, nothing to the cloud</text>
-          <text x="176" y="102">2. Menu-aware correction</text>
-          <text class="muted" x="194" y="118">"polly nesian" → Polynesian</text>
-          <text x="176" y="142">3. Read the spoken order</text>
-          <text class="muted" x="194" y="158">meals, counts, corrections, upsells</text>
-          <text x="176" y="182">4. Compare with the ticket</text>
+          <line x1="140" y1="130" x2="188" y2="130" marker-end="url(#arrow)"/>
 
-          <line x1="430" y1="70" x2="476" y2="70"/>
-          <path d="M470 65 L476 70 L470 75"/>
-          <line x1="476" y1="86" x2="430" y2="86"/>
-          <path d="M436 81 L430 86 L436 91"/>
-          <rect class="box" x="476" y="44" width="182" height="58" rx="6"/>
-          <text x="567" y="68" text-anchor="middle">POS ticket</text>
-          <text class="muted" x="567" y="86" text-anchor="middle">checked before it fires</text>
+          <!-- server -->
+          <rect class="box" x="190" y="20" width="290" height="220" rx="6"/>
+          <text x="335" y="44" text-anchor="middle" dominant-baseline="middle">In-restaurant server (Rust)</text>
+          <text x="208" y="78" dominant-baseline="middle">1. Whisper speech-to-text</text>
+          <text class="muted" x="226" y="94" dominant-baseline="middle">on device, nothing to the cloud</text>
+          <text x="208" y="122" dominant-baseline="middle">2. Menu-aware correction</text>
+          <text class="muted" x="226" y="138" dominant-baseline="middle">"polly nesian" → Polynesian</text>
+          <text x="208" y="166" dominant-baseline="middle">3. Read the spoken order</text>
+          <text class="muted" x="226" y="182" dominant-baseline="middle">meals, counts, corrections</text>
+          <text x="208" y="214" dominant-baseline="middle">4. Compare with the ticket</text>
 
-          <line x1="430" y1="150" x2="476" y2="150"/>
-          <path d="M470 145 L476 150 L470 155"/>
-          <rect class="box" x="476" y="124" width="182" height="58" rx="6"/>
-          <text x="567" y="148" text-anchor="middle">Kitchen</text>
-          <text class="muted" x="567" y="166" text-anchor="middle">only after it matches</text>
+          <!-- POS ticket (center y = 80) and kitchen (center y = 180): symmetric around 130 -->
+          <line x1="480" y1="72" x2="528" y2="72" marker-end="url(#arrow)"/>
+          <line x1="530" y1="88" x2="482" y2="88" marker-end="url(#arrow)"/>
+          <rect class="box" x="530" y="45" width="160" height="70" rx="6"/>
+          <text x="610" y="71" text-anchor="middle" dominant-baseline="middle">POS ticket</text>
+          <text class="muted" x="610" y="92" text-anchor="middle" dominant-baseline="middle">checked before</text>
+          <text class="muted" x="610" y="105" text-anchor="middle" dominant-baseline="middle">it fires</text>
 
-          <text class="muted" x="59" y="160" text-anchor="middle">buzzes on a</text>
-          <text class="muted" x="59" y="172" text-anchor="middle">mismatch</text>
-          <path d="M160 214 L59 214 L59 180"/>
-          <path d="M54 186 L59 180 L64 186"/>
-          <line x1="295" y1="194" x2="295" y2="214"/>
-          <line x1="295" y1="214" x2="160" y2="214"/>
+          <line x1="480" y1="180" x2="528" y2="180" marker-end="url(#arrow)"/>
+          <rect class="box" x="530" y="145" width="160" height="70" rx="6"/>
+          <text x="610" y="171" text-anchor="middle" dominant-baseline="middle">Kitchen</text>
+          <text class="muted" x="610" y="192" text-anchor="middle" dominant-baseline="middle">only after</text>
+          <text class="muted" x="610" y="205" text-anchor="middle" dominant-baseline="middle">it matches</text>
+
+          <!-- feedback: server buzzes the clip on a mismatch -->
+          <path d="M335 240 L335 262 L75 262 L75 167" marker-end="url(#arrow)"/>
+          <text class="muted" x="205" y="278" text-anchor="middle" dominant-baseline="middle">buzzes the clip on a mismatch</text>
         </svg>
         <p>
           Listening starts when the employee enters the car (drive-thru) or the guest's name (counter),
