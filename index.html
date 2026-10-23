@@ -18,27 +18,17 @@
 <body>
   <div class="container">
 
-    <!-- ============================================================
-         LEFT PANE — name + navigation
-         ============================================================ -->
+    <!-- left pane -->
     <div class="left-pane toc">
-
-      <!-- Desktop name (stacked, monospace) -->
       <h1 class="name about">Brenden<br>Fogg<br></h1>
-
-      <!-- Mobile name (single line) -->
       <div class="mobile-header">
         <span class="about">Brenden Fogg</span>
       </div>
-
-      <!-- Mobile hamburger toggle -->
       <div class="mobile-toggle">
         <span></span>
         <span></span>
         <span></span>
       </div>
-
-      <!-- Navigation links -->
       <div class="links">
         <div class="visible-sm small-br"></div>
         <div href="#projects" class="nav projects">Projects</div>
@@ -47,28 +37,18 @@
         <div class="small-br"></div>
         <div href="#cv" class="nav cv">CV</div>
         <div class="small-br"></div>
-        <a href="https://github.com/brendenfogg" target="_blank" rel="noopener">GitHub</a>
+        <div href="#linkedin" class="nav linkedin">LinkedIn</div>
+        <div class="small-br"></div>
+        <a href="https://github.com/brendenfogg">GitHub</a>
       </div>
     </div>
 
-    <!-- ============================================================
-         RIGHT PANE — content
-         ============================================================ -->
+    <!-- right pane -->
     <div class="right-pane main">
 
-      <!-- ---- ABOUT ---- -->
+      <!-- about -->
       <div class="anchor" id="about">
-
-        <!--
-          EDIT: Replace _images/profile.jpg with your actual photo.
-          Keep the image roughly square — it will be displayed at 140px tall.
-        -->
-        <!-- <img src="_images/profile.jpg" alt="Brenden Fogg"> -->
-
-        <!--
-          EDIT: Update the paragraphs below with your own bio.
-          Keep it concise — 2–3 short paragraphs is the right length.
-        -->
+        <img src="_images/profile.png" alt="Brenden Fogg">
         <p>
           Hello! I'm Brenden. I study [your major / field] at [your university or institution].
           My interests lie at the intersection of [topic A], [topic B], and [topic C].
@@ -81,8 +61,6 @@
           Outside of work, I'm interested in [hobby or interest] and [another one].
         </p>
         <br>
-
-        <!-- EDIT: Replace with your actual email address -->
         <div>
           <span class="bold">Email</span>:&nbsp;&nbsp;<a href="mailto:fogg.brenden@gmail.com">fogg.brenden@gmail.com</a>
         </div>
@@ -90,19 +68,16 @@
 
       <div class="br"></div>
 
-      <!-- ---- PROJECTS ---- -->
+      <!-- projects -->
       <div class="anchor" id="projects">
         <h2 class="section">Projects</h2>
         <div class="small-br"></div>
 
         <!--
-          EDIT: Add or remove project entries below.
-          Each entry follows this pattern:
+          EDIT: Add your projects here. Pattern per entry:
 
             <div>
-              <span class="bold">Project Name</span>. Brief description of what it does
-              and what makes it interesting.
-              <span class="tag">Python</span>
+              <span class="bold">Project Name</span>. Description.
               <span class="icon">
                 <a class="fa fa-github" aria-hidden="true" href="https://github.com/you/repo"></a>
               </span>
@@ -111,12 +86,13 @@
         -->
 
         <div>
-          <span class="bold">Project Name 1</span>.
-          A short description of the project — what problem it solves, what you learned,
-          or what's interesting about it.
-          <span class="tag">Python</span>
+          <a href="projects/order-check/"><span class="bold">Order Check</span></a>.
+          An on-device AI "second set of ears" that compares what a restaurant guest says with
+          what gets rung in, and flags mistakes before the kitchen sees them. Rust + Whisper;
+          evaluated on 1,500 spoken-order checks, including an honest held-out test.
           <span class="icon">
-            <a class="fa fa-github" aria-hidden="true" href="https://github.com/brendenfogg"></a>
+            <a class="fa fa-file-text-o" aria-hidden="true" href="projects/order-check/" title="Case study"></a>
+            <a class="fa fa-github" aria-hidden="true" href="https://github.com/Brendenfogg/order-check" title="Code"></a>
           </span>
         </div>
         <br>
@@ -124,7 +100,6 @@
         <div>
           <span class="bold">Project Name 2</span>.
           Another description. Keep it to 1–2 sentences so the page stays scannable.
-          <span class="tag">Jupyter</span>
           <span class="icon">
             <a class="fa fa-github" aria-hidden="true" href="https://github.com/brendenfogg"></a>
           </span>
@@ -134,7 +109,6 @@
         <div>
           <span class="bold">Project Name 3</span>.
           Description of a third project. Link to a live demo or paper if you have one.
-          <span class="tag">JavaScript</span>
           <span class="icon">
             <a class="fa fa-external-link" aria-hidden="true" href="#"></a>
           </span>
@@ -143,19 +117,18 @@
 
       <div class="br"></div>
 
-      <!-- ---- RESEARCH / COURSEWORK ---- -->
+      <!-- research -->
       <div class="anchor" id="research">
         <h2 class="section">Research</h2>
         <div class="small-br"></div>
 
         <!--
-          EDIT: Add research papers, coursework highlights, or lab work here.
-          Same pattern as projects — one <div> per entry, with a <br> between them.
-          Remove this section entirely if it doesn't apply to you.
+          EDIT: Add papers, lab work, or notable coursework here.
+          Remove this section entirely if it doesn't apply.
         -->
 
         <div>
-          <span class="author-highlight">Brenden Fogg</span>.
+          <span class="bold">Brenden Fogg</span>.
           [Year]. Title of paper or research project.
           <i>Venue, journal, or course name</i>.
           <span class="icon">
@@ -165,7 +138,7 @@
         <br>
 
         <div>
-          <span class="author-highlight">Brenden Fogg</span> and Collaborator Name.
+          <span class="bold">Brenden Fogg</span> and Collaborator Name.
           [Year]. Another paper or project title.
           <i>Venue or context</i>.
           <span class="icon">
@@ -176,29 +149,46 @@
 
       <div class="br"></div>
 
-      <!-- ---- CV ---- -->
+      <!-- cv -->
       <div class="anchor" id="cv">
         <h2 class="section">CV</h2>
         <div class="small-br"></div>
 
         <!--
-          EDIT: Place your resume PDF at _data/BrendenFogg-CV.pdf
-          and update the link below.
+          EDIT: Drop your resume at _data/BrendenFogg-CV.pdf and update the link.
         -->
-        <a href="_data/BrendenFogg-CV.pdf">
-          <span class="fa fa-file-o" aria-hidden="true"></span>&nbsp;
-          <span class="bold">Resume.pdf</span>
-        </a>
-        — Updated [Month Year]
+        <div>
+          <span class="bold">
+            <a href="_data/BrendenFogg-CV.pdf">Resume.pdf</a>
+          </span>
+          <span class="icon">
+            <a class="fa fa-file-o" aria-hidden="true" href="_data/BrendenFogg-CV.pdf"></a>
+          </span>
+          — Updated [Month Year]
+        </div>
+        <div class="br"></div>
+      </div>
 
+      <!-- linkedin -->
+      <div class="anchor" id="linkedin">
+        <h2 class="section">LinkedIn</h2>
+        <div class="small-br"></div>
+        <div>
+          <span class="bold">
+            <a href="https://linkedin.com/in/brendenfogg">Brenden Fogg</a>
+          </span>
+          <span class="icon">
+            <a class="fa fa-linkedin-square" aria-hidden="true" href="https://linkedin.com/in/brendenfogg"></a>
+          </span>
+        </div>
         <div class="br"></div>
       </div>
 
       <div class="abyss"></div>
-    </div><!-- /right-pane -->
-  </div><!-- /container -->
+    </div>
 
-  <!-- Scripts -->
+  </div>
+
   <script src="_js/main.js"></script>
 </body>
 </html>

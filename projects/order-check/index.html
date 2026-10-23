@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Order Check · Brenden Fogg</title>
+
+  <!-- meta -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Order Check: an on-device AI second set of ears that catches restaurant order-entry mistakes before the kitchen sees them.">
+
+  <!-- Font Awesome (icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../../_css/style.css">
+  <style>
+    /* Case-study additions; everything else comes from the site stylesheet. */
+    .lede { font-size: 17px; line-height: 1.5; padding-top: 4px !important; }
+    .meta { color: #777777; font-size: 13px; }
+    .callout {
+      font-family: 'DM Mono', 'Courier New', Courier, monospace;
+      font-size: 13px;
+      border-left: 3px solid #c4002b;
+      background: #fdf3f4;
+      padding: 8px 12px;
+      margin: 12px 0;
+    }
+    figure { margin: 18px 0 6px; }
+    figure img { width: 100%; border: 1px solid #333333; display: block; }
+    figcaption { color: #777777; font-size: 13px; padding-top: 6px; }
+    .diagram { width: 100%; height: auto; display: block; margin: 14px 0 4px; }
+    .diagram text { font-family: 'DM Mono', 'Courier New', Courier, monospace; font-size: 12px; fill: #333333; }
+    .diagram .box { fill: #ffffff; stroke: #333333; stroke-width: 1; }
+    .diagram .accent { stroke: #c4002b; }
+    .diagram .muted { fill: #777777; font-size: 11px; }
+    .diagram line, .diagram path { stroke: #333333; stroke-width: 1; fill: none; }
+    table.results { border-collapse: collapse; width: 100%; font-size: 14px; margin: 10px 0 4px; }
+    table.results th { text-align: left; font-weight: 500; border-bottom: 1px solid #333333; padding: 6px 8px 6px 0; }
+    table.results td { border-bottom: 1px solid #e5e5e5; padding: 6px 8px 6px 0; font-variant-numeric: tabular-nums; }
+    table.results td.num, table.results th.num { text-align: right; }
+    .honest { font-weight: 500; }
+    ul.tight { margin: 4px 0; padding-left: 20px; }
+    ul.tight li { padding: 3px 0; }
+    .back { font-size: 14px; }
+    @media (max-width: 629px) {
+      table.results { font-size: 12.5px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- left pane -->
+    <div class="left-pane toc">
+      <h1 class="name about"><a href="../../" style="color:inherit;text-decoration:none">Brenden<br>Fogg<br></a></h1>
+      <div class="mobile-header">
+        <span class="about"><a href="../../" style="color:inherit;text-decoration:none">Brenden Fogg</a></span>
+      </div>
+      <div class="mobile-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="links">
+        <div class="visible-sm small-br"></div>
+        <div href="#problem" class="nav problem">Problem</div>
+        <div class="small-br"></div>
+        <div href="#how" class="nav how">How it works</div>
+        <div class="small-br"></div>
+        <div href="#demo" class="nav demo">Demo</div>
+        <div class="small-br"></div>
+        <div href="#results" class="nav results">Results</div>
+        <div class="small-br"></div>
+        <div href="#privacy" class="nav privacy">Privacy</div>
+        <div class="small-br"></div>
+        <div href="#next" class="nav next">Next</div>
+        <div class="small-br"></div>
+        <a href="https://github.com/Brendenfogg/order-check">Code</a>
+        <div class="small-br"></div>
+        <a class="back" href="../../#projects">&larr; All projects</a>
+      </div>
+    </div>
+
+    <!-- right pane -->
+    <div class="right-pane main">
+
+      <div class="anchor" id="top">
+        <h2 class="section">Order Check</h2>
+        <p class="lede">
+          A second set of ears for the person taking your order. Order Check listens while an
+          employee takes an order, compares what the guest <i>said</i> with what was <i>rung in</i>,
+          and flags the difference before the ticket reaches the kitchen.
+        </p>
+        <div class="callout">
+          Said SPICY CHICKEN SANDWICH MEAL, rang CHICKEN SANDWICH MEAL<br>
+          Said 3 Polynesian, rang 1
+        </div>
+        <div class="meta">
+          Personal project, 2026 · Rust, Whisper (on-device speech recognition), SQLite, HTML/JS ·
+          <a href="https://github.com/Brendenfogg/order-check">Code on GitHub</a>
+          <span class="icon"><a class="fa fa-github" aria-hidden="true" href="https://github.com/Brendenfogg/order-check"></a></span>
+        </div>
+      </div>
+
+      <div class="br"></div>
+
+      <!-- problem -->
+      <div class="anchor" id="problem">
+        <h2 class="section">Problem</h2>
+        <p>
+          When I worked at Chick-fil-A, most order mistakes weren't dramatic. They were near-misses:
+          a fat-fingered tap on the button next to the right one, spicy instead of regular, an
+          8-count rung as a 12-count, one Polynesian sauce instead of three. Each one gets caught late,
+          at the window or by an unhappy guest, and costs a remake, wasted food, and time in a line
+          that's already long.
+        </p>
+        <p>
+          Nothing checks the gap between what a guest says and what gets entered. Chains have tested AI
+          that <i>replaces</i> the person taking the order. I wanted the opposite: keep the person and the
+          hospitality, and give them a backup that catches the small mistakes. <span class="bold">AI that
+          keeps jobs, not takes them.</span> The AI never changes a ticket; it only points at the mismatch.
+        </p>
+      </div>
+
+      <div class="br"></div>
+
+      <!-- how it works -->
+      <div class="anchor" id="how">
+        <h2 class="section">How it works</h2>
+        <svg class="diagram" viewBox="0 0 662 230" role="img" aria-label="A clip microphone streams audio to an in-restaurant server, which transcribes it, reads the spoken order, and checks it against the POS ticket before the kitchen gets it.">
+          <rect class="box accent" x="4" y="70" width="110" height="64" rx="6"/>
+          <text x="59" y="98" text-anchor="middle">Clip / mic</text>
+          <text class="muted" x="59" y="116" text-anchor="middle">listens during</text>
+          <text class="muted" x="59" y="128" text-anchor="middle">an order only</text>
+
+          <line x1="114" y1="102" x2="160" y2="102"/>
+          <path d="M154 97 L160 102 L154 107"/>
+
+          <rect class="box" x="160" y="10" width="270" height="184" rx="6"/>
+          <text x="295" y="32" text-anchor="middle">In-restaurant server (Rust)</text>
+          <text x="176" y="62">1. Whisper speech-to-text</text>
+          <text class="muted" x="194" y="78">on device, nothing to the cloud</text>
+          <text x="176" y="102">2. Menu-aware correction</text>
+          <text class="muted" x="194" y="118">"polly nesian" → Polynesian</text>
+          <text x="176" y="142">3. Read the spoken order</text>
+          <text class="muted" x="194" y="158">meals, counts, corrections, upsells</text>
+          <text x="176" y="182">4. Compare with the ticket</text>
+
+          <line x1="430" y1="70" x2="476" y2="70"/>
+          <path d="M470 65 L476 70 L470 75"/>
+          <line x1="476" y1="86" x2="430" y2="86"/>
+          <path d="M436 81 L430 86 L436 91"/>
+          <rect class="box" x="476" y="44" width="182" height="58" rx="6"/>
+          <text x="567" y="68" text-anchor="middle">POS ticket</text>
+          <text class="muted" x="567" y="86" text-anchor="middle">checked before it fires</text>
+
+          <line x1="430" y1="150" x2="476" y2="150"/>
+          <path d="M470 145 L476 150 L470 155"/>
+          <rect class="box" x="476" y="124" width="182" height="58" rx="6"/>
+          <text x="567" y="148" text-anchor="middle">Kitchen</text>
+          <text class="muted" x="567" y="166" text-anchor="middle">only after it matches</text>
+
+          <text class="muted" x="59" y="160" text-anchor="middle">buzzes on a</text>
+          <text class="muted" x="59" y="172" text-anchor="middle">mismatch</text>
+          <path d="M160 214 L59 214 L59 180"/>
+          <path d="M54 186 L59 180 L64 186"/>
+          <line x1="295" y1="194" x2="295" y2="214"/>
+          <line x1="295" y1="214" x2="160" y2="214"/>
+        </svg>
+        <p>
+          Listening starts when the employee enters the car (drive-thru) or the guest's name (counter),
+          and stops at Finalize. The check has three answers, not two. A confident <span class="bold">mismatch</span>
+          buzzes the clip. <span class="bold">Couldn't confirm</span> (unclear audio, or something on the ticket that
+          simply wasn't heard) shows a quiet note with no buzz, because false alarms teach people to ignore
+          the alert. Anything the guest didn't specify, like a size, is never counted as a mistake.
+        </p>
+        <p>
+          Everything the system knows about the restaurant (items, how people say them, look-alike groups,
+          modifiers, meal rules) lives in one menu file, so another restaurant could adopt it by writing its own.
+        </p>
+      </div>
+
+      <div class="br"></div>
+
+      <!-- demo -->
+      <div class="anchor" id="demo">
+        <h2 class="section">Demo</h2>
+
+        <!--
+          DEMO VIDEO: when the screen recording is ready, export it as
+          _media/order-check-demo.mp4 (H.264, under ~25 MB) and uncomment:
+
+        <figure>
+          <video src="../../_media/order-check-demo.mp4" poster="../../_images/order-check-pos.png"
+                 controls playsinline preload="none" style="width:100%;border:1px solid #333333"></video>
+          <figcaption>Live demo: speak an order, ring it in wrong, and the clip buzzes before it reaches the kitchen.</figcaption>
+        </figure>
+        -->
+
+        <figure>
+          <img src="../../_images/order-check-pos.png" alt="Mock POS showing a drive-thru ticket with a chicken sandwich meal and one Polynesian sauce, and an alert: Said SPICY CHICKEN SANDWICH MEAL, rang CHICKEN SANDWICH MEAL; Said 3 Polynesian, rang 1.">
+          <figcaption>
+            The guest asked for a spicy chicken sandwich meal and three Polynesian sauces. The ticket says regular and one.
+            The alert shows the real check result for that spoken order. The mock POS is modeled on the Chick-fil-A screen, without logos.
+          </figcaption>
+        </figure>
+
+        <figure>
+          <img src="../../_images/order-check-dashboard.png" alt="Restaurant dashboard with orders checked, share of orders with a mistake caught, mistakes by hour and type, and the most mixed-up items.">
+          <figcaption>
+            Restaurant-level dashboard (shown with clearly labeled demo data): mistakes caught by hour and type,
+            the most mixed-up items, and fix rate. No employee names and no conversations are stored.
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="br"></div>
+
+      <!-- results -->
+      <div class="anchor" id="results">
+        <h2 class="section">Results</h2>
+        <p>
+          I built a test set of scripted orders, spoken by 16 synthetic voices, in two situations (face-to-face,
+          and headset, where only the employee's read-back is heard) and at three noise levels. Every order is
+          checked against its correct ticket and against tickets with planted mistakes of every kind.
+        </p>
+        <table class="results">
+          <tr><th>Clean audio, default model</th><th class="num">Mistakes caught</th><th class="num">False alarms</th></tr>
+          <tr><td>Orders I tuned the rules on</td><td class="num">96%</td><td class="num">3%</td></tr>
+          <tr class="honest"><td>New orders it never saw</td><td class="num">81%</td><td class="num">35%</td></tr>
+        </table>
+        <div class="meta">Result returned about half a second after Finalize. Full breakdown, including noisy audio, in the <a href="https://github.com/Brendenfogg/order-check/blob/feat/order-check-v1/docs/results.md">results write-up</a>.</div>
+        <p>
+          The second row is the one that matters. On the orders I tuned against, the check looks nearly perfect.
+          On a held-out set of new orders, it still catches most mistakes, but it raises false alarms on about a
+          third of correct tickets. The rules are overfit: phrasings like "one large and one small lemonade" or
+          "two shakes, one with no whipped cream" were never taught. I didn't patch those, because fixing them
+          would make the held-out test meaningless.
+        </p>
+        <p>
+          That's the real takeaway: a rule-based reader can be patched phrase by phrase, but it won't generalize
+          on its own. The data points to the next step.
+        </p>
+      </div>
+
+      <div class="br"></div>
+
+      <!-- privacy -->
+      <div class="anchor" id="privacy">
+        <h2 class="section">Privacy by design</h2>
+        <ul class="tight">
+          <li>Audio is never saved. Speech recognition runs on the device; nothing goes to the cloud.</li>
+          <li>Transcripts live in memory only until the order is sent, then they're deleted.</li>
+          <li>The only record kept is anonymous: a time, what kind of mistake was caught, and whether it was fixed.</li>
+          <li>No voiceprints, and the mic only listens during an order (and turns itself off after five minutes).</li>
+          <li>Service-standard tracking ("My pleasure", offering the seasonal item) is optional and team-level, framed as coaching.</li>
+        </ul>
+      </div>
+
+      <div class="br"></div>
+
+      <!-- next -->
+      <div class="anchor" id="next">
+        <h2 class="section">What's next</h2>
+        <ul class="tight">
+          <li>Record real orders and re-run the evaluation on them</li>
+          <li>Replace the hand-written order reader with a small local language model, judged on the held-out set</li>
+          <li>Build the clip: an ESP32 with a microphone and a vibration motor that buzzes for a mismatch and for "food ready"</li>
+          <li>Connect to a real POS (Toast) and to the kitchen expo screen</li>
+        </ul>
+        <div class="small-br"></div>
+        <div class="meta">Personal portfolio project. Not affiliated with Chick-fil-A or Toast.</div>
+        <div class="br"></div>
+      </div>
+
+      <div class="abyss"></div>
+    </div>
+
+  </div>
+
+  <script src="../../_js/main.js"></script>
+</body>
+</html>

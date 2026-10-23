@@ -6,6 +6,7 @@
 /* ---- Fonts ---- */
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500&display=swap');
 
+
 /* ---- Reset / Base ---- */
 html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -57,8 +58,9 @@ a,
 a:hover,
 a:hover span,
 .about:hover,
-.nav:hover {
-  color: #98ACF8;
+.nav:hover,
+.nav.active {
+  color: #6ab0d8;
 }
 
 br {
@@ -101,7 +103,7 @@ br {
   margin-bottom: 140px;
 }
 
-/* ---- Profile image ---- */
+/* ---- Profile image / pixel-hero ---- */
 #about img {
   float: left;
   height: 140px;
@@ -109,6 +111,21 @@ br {
   padding: 0;
   border: 1px solid #333333;
 }
+
+#photo-hero {
+  float: left;
+  width: 160px;
+  min-height: 160px;
+  margin: 8px 20px 10px 0;
+  line-height: 0;
+}
+
+#photo-hero canvas {
+  display: block;
+  background: #ffffff;
+  filter: grayscale(100%);
+}
+
 
 .main > div {
   position: relative;
@@ -127,6 +144,11 @@ br {
   margin-bottom: 4px;
 }
 
+/* ---- Scroll target offset so headings don't hide under the fixed sidebar ---- */
+.anchor {
+  scroll-margin-top: 40px;
+}
+
 /* ---- Spacers ---- */
 .br {
   height: 80px;
@@ -143,7 +165,7 @@ br {
 }
 
 .fa {
-  color: #0088f9;
+  color: #333333;
 }
 
 /* ---- Project/paper entries ---- */
@@ -168,15 +190,11 @@ br {
   line-height: 1.6;
 }
 
-/* ---- Email obfuscation ---- */
-.email-wrapper {
-  display: inline;
-}
-
 /* ---- Abyss (scroll padding at bottom) ---- */
 .abyss {
   height: 190px;
 }
+
 
 /* ============================================================
    Responsive — min 630px (not tiny)
@@ -200,6 +218,7 @@ br {
   .toc {
     text-align: right;
     position: fixed;
+    top: 10vw;
   }
 }
 

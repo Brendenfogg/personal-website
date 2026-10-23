@@ -2,10 +2,10 @@
    main.js — Brenden Fogg personal site
    ============================================================ */
 
-// ---- Mobile nav toggle ----
+
 document.addEventListener('DOMContentLoaded', function () {
   const toggle = document.querySelector('.mobile-toggle');
-  const toc = document.querySelector('.toc');
+  const toc    = document.querySelector('.toc');
 
   if (toggle && toc) {
     toggle.addEventListener('click', function () {
@@ -13,42 +13,35 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Close mobile nav when a nav item is clicked
-  const navLinks = document.querySelectorAll('.nav, .links a');
-  navLinks.forEach(function (link) {
+  document.querySelectorAll('.nav, .links a').forEach(function (link) {
     link.addEventListener('click', function () {
       if (toc) toc.classList.remove('open-nav');
     });
   });
 
-  // ---- Smooth scroll for .nav divs (non-anchor elements) ----
-  const navItems = document.querySelectorAll('.nav[href]');
-  navItems.forEach(function (item) {
+  document.querySelectorAll('.nav[href]').forEach(function (item) {
     item.addEventListener('click', function () {
       const target = document.querySelector(item.getAttribute('href'));
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
     });
   });
 
-  // ---- Active nav highlight on scroll ----
+  // ── Scrollspy — highlights the nav item for the current section ──────────
   const sections = document.querySelectorAll('.anchor[id]');
-  const navDivs = document.querySelectorAll('.nav');
+  const navDivs  = document.querySelectorAll('.nav');
 
   function onScroll() {
     let current = '';
     sections.forEach(function (section) {
-      const top = section.getBoundingClientRect().top;
-      if (top <= 80) current = section.id;
+      if (section.getBoundingClientRect().top <= window.innerHeight * 0.4) {
+        current = section.id;
+      }
     });
     navDivs.forEach(function (div) {
-      div.style.color = '';
-      if (div.getAttribute('href') === '#' + current) {
-        div.style.color = '#98ACF8';
-      }
+      div.classList.toggle('active', div.getAttribute('href') === '#' + current);
     });
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll(); // set initial state on load
 });
