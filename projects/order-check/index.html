@@ -92,8 +92,8 @@
       <div class="anchor" id="top">
         <h2 class="section">Order Check</h2>
         <p class="lede">
-          A second set of ears for the person taking your order. Order Check listens while an
-          employee takes an order, compares what the guest <i>said</i> with what was <i>rung in</i>,
+          A second set of ears for the person taking your order. Order Check is an AI-powered
+          microphone that listens while an employee takes an order, compares what the guest <i>said</i> with what was <i>rung in</i>,
           and flags the difference before the ticket reaches the kitchen.
         </p>
         <div class="callout">
@@ -132,7 +132,7 @@
       <!-- how it works -->
       <div class="anchor" id="how">
         <h2 class="section">How it works</h2>
-        <svg class="diagram" viewBox="0 0 700 290" role="img" aria-label="A clip microphone streams audio to an in-restaurant server, which transcribes it, reads the spoken order, and checks it against the POS ticket before the kitchen gets it. On a mismatch, the server buzzes the clip.">
+        <svg class="diagram" viewBox="0 0 700 290" role="img" aria-label="An AI-powered microphone streams audio to an in-restaurant server, which transcribes it, reads the spoken order, and checks it against the POS ticket before the kitchen gets it. On a mismatch, the server buzzes the microphone.">
           <defs>
             <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
               <path d="M0 0 L10 5 L0 10" fill="none" stroke="#333333" stroke-width="1.5"/>
@@ -140,9 +140,9 @@
           </defs>
 
           <!-- everything is centered on y = 130 -->
-          <!-- clip -->
+          <!-- AI microphone -->
           <rect class="box accent" x="10" y="95" width="130" height="70" rx="6"/>
-          <text x="75" y="121" text-anchor="middle" dominant-baseline="middle">Clip / mic</text>
+          <text x="75" y="121" text-anchor="middle" dominant-baseline="middle">AI microphone</text>
           <text class="muted" x="75" y="140" text-anchor="middle" dominant-baseline="middle">listens during</text>
           <text class="muted" x="75" y="153" text-anchor="middle" dominant-baseline="middle">an order only</text>
 
@@ -173,14 +173,14 @@
           <text class="muted" x="610" y="192" text-anchor="middle" dominant-baseline="middle">only after</text>
           <text class="muted" x="610" y="205" text-anchor="middle" dominant-baseline="middle">it matches</text>
 
-          <!-- feedback: server buzzes the clip on a mismatch -->
+          <!-- feedback: server buzzes the microphone on a mismatch -->
           <path d="M335 240 L335 262 L75 262 L75 167" marker-end="url(#arrow)"/>
-          <text class="muted" x="205" y="278" text-anchor="middle" dominant-baseline="middle">buzzes the clip on a mismatch</text>
+          <text class="muted" x="205" y="278" text-anchor="middle" dominant-baseline="middle">buzzes the mic on a mismatch</text>
         </svg>
         <p>
           Listening starts when the employee enters the car (drive-thru) or the guest's name (counter),
           and stops at Finalize. The check has three answers, not two. A confident <span class="bold">mismatch</span>
-          buzzes the clip. <span class="bold">Couldn't confirm</span> (unclear audio, or something on the ticket that
+          buzzes the AI mic. <span class="bold">Couldn't confirm</span> (unclear audio, or something on the ticket that
           simply wasn't heard) shows a quiet note with no buzz, because false alarms teach people to ignore
           the alert. Anything the guest didn't specify, like a size, is never counted as a mistake.
         </p>
@@ -270,7 +270,7 @@
         <ul class="tight">
           <li>Record real orders and re-run the evaluation on them</li>
           <li>Replace the hand-written order reader with a small local language model, judged on the held-out set</li>
-          <li>Build the clip: an ESP32 with a microphone and a vibration motor that buzzes for a mismatch and for "food ready"</li>
+          <li>Build the wearable AI mic: an ESP32 with a microphone and a vibration motor that buzzes for a mismatch and for "food ready"</li>
           <li>Connect to a real POS (Toast) and to the kitchen expo screen</li>
         </ul>
         <div class="small-br"></div>
