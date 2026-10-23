@@ -14,13 +14,20 @@
   <!-- CSS -->
   <link rel="stylesheet" href="_css/style.css">
   <style>
-    /* Experience / education entries */
-    .entry-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    /* One layout for every entry: title + date, subtitle, bullets, links */
+    .entry { margin-bottom: 26px; }
+    .entry:last-child { margin-bottom: 0; }
+    .entry-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
     .when { color: #777777; font-size: 13px; white-space: nowrap; }
-    .role { font-style: italic; }
-    .entry ul { margin: 4px 0 0; padding-left: 18px; }
+    .sub { color: #555555; font-style: italic; }
+    .entry ul { margin: 6px 0 0; padding-left: 18px; }
     .entry li { padding: 2px 0; }
-    .skills { line-height: 1.7; }
+    .entry-links { margin-top: 6px; font-size: 14px; }
+    .entry-links a { margin-right: 14px; }
+    .entry-links .fa { margin-right: 4px; }
+    .facts div { padding: 1px 0; }
+    .skill-list { margin: 0; padding-left: 18px; }
+    .skill-list li { padding: 2px 0; }
   </style>
 </head>
 
@@ -44,6 +51,8 @@
         <div class="small-br"></div>
         <div href="#experience" class="nav experience">Experience</div>
         <div class="small-br"></div>
+        <div href="#leadership" class="nav leadership">Leadership</div>
+        <div class="small-br"></div>
         <div href="#education" class="nav education">Education</div>
         <div class="small-br"></div>
         <div href="#cv" class="nav cv">CV</div>
@@ -62,22 +71,17 @@
         <img src="_images/profile.png" alt="Brenden Fogg">
         <p>
           Hello! I'm Brenden. I study Industrial and Operations Engineering at the
-          University of Michigan, and I work as an AI Analyst at Syzygy Services,
-          where I help a client without an in-house IT team find where their software
-          slows their day-to-day operations down, and fix it.
+          University of Michigan and work as an AI Analyst at Syzygy Services.
         </p>
         <p>
-          My work sits where operations, data, and practical AI tools meet: auditing a
-          $163K budget, building dashboards a team actually uses, forecasting game-day
-          demand to cut food waste, and building Order Check, an AI tool that catches
-          restaurant order mistakes before they reach the kitchen.
+          I like finding where operations break down and building the fix: auditing a
+          budget, designing a dashboard a team actually uses, forecasting game-day demand
+          to cut food waste, and building Order Check, an AI tool that catches restaurant
+          order mistakes before they reach the kitchen.
         </p>
-        <br>
-        <div>
-          <span class="bold">Email</span>:&nbsp;&nbsp;<a href="mailto:fogg.brenden@gmail.com">fogg.brenden@gmail.com</a>
-        </div>
-        <div>
-          <span class="bold">Based in</span>:&nbsp;&nbsp;Ann Arbor, Michigan
+        <div class="facts">
+          <div><span class="bold">Email</span>:&nbsp;&nbsp;<a href="mailto:fogg.brenden@gmail.com">fogg.brenden@gmail.com</a></div>
+          <div><span class="bold">Based in</span>:&nbsp;&nbsp;Ann Arbor, Michigan</div>
         </div>
       </div>
 
@@ -88,34 +92,44 @@
         <h2 class="section">Projects</h2>
         <div class="small-br"></div>
 
-        <div>
-          <a href="projects/order-check/"><span class="bold">Order Check</span></a>.
-          An on-device AI "second set of ears" that compares what a restaurant guest says with
-          what gets rung in, and flags mistakes before the kitchen sees them. Rust + Whisper;
-          evaluated on 1,500 spoken-order checks, including an honest held-out test.
-          <span class="icon">
-            <a class="fa fa-file-text-o" aria-hidden="true" href="projects/order-check/" title="Case study"></a>
-            <a class="fa fa-github" aria-hidden="true" href="https://github.com/Brendenfogg/order-check" title="Code"></a>
-          </span>
+        <div class="entry">
+          <div class="entry-head">
+            <a href="projects/order-check/"><span class="bold">Order Check</span></a>
+            <span class="when">Personal project · 2026</span>
+          </div>
+          <div class="sub">On-device AI · Rust · Whisper speech recognition</div>
+          <ul>
+            <li>Listens while an order is taken, compares what the guest said with what was rung in, and flags mistakes before the kitchen sees them.</li>
+            <li>Evaluated on 1,500 spoken-order checks, including a held-out test that exposed where the approach needs to go next.</li>
+          </ul>
+          <div class="entry-links">
+            <a href="projects/order-check/"><i class="fa fa-file-text-o" aria-hidden="true"></i>Case study</a>
+            <a href="https://github.com/Brendenfogg/order-check"><i class="fa fa-github" aria-hidden="true"></i>Code</a>
+          </div>
         </div>
-        <br>
 
-        <div>
-          <span class="bold">Game-day demand forecasting</span>.
-          A multivariable prediction model built from historical sales and game-day event data
-          to guide inventory at Chick-fil-A's UT football stadium location. It cut food waste
-          by over 50%, saving an estimated tens of thousands of dollars per season.
-          <span class="tag">Chick-fil-A</span>
+        <div class="entry">
+          <div class="entry-head">
+            <span class="bold">Game-day demand forecasting</span>
+            <span class="when">Chick-fil-A · 2024</span>
+          </div>
+          <div class="sub">Prediction model · inventory planning</div>
+          <ul>
+            <li>Multivariable model built from historical sales and game-day event data to guide inventory at the UT football stadium location.</li>
+            <li>Cut food waste by over 50%.</li>
+          </ul>
         </div>
-        <br>
 
-        <div>
-          <span class="bold">Operations dashboard and budget redesign</span>.
-          A data analytics dashboard that gave an 8-person team visibility into budgets and
-          events, with role-based views and automated event tasks; plus an audit of a $163K
-          budget that found $22K in untracked expenses and revenue, and the new budget and
-          ledger system that closed the gap.
-          <span class="tag">CGCS</span>
+        <div class="entry">
+          <div class="entry-head">
+            <span class="bold">Operations dashboard and budget redesign</span>
+            <span class="when">CGCS · 2026</span>
+          </div>
+          <div class="sub">Data analytics · financial operations</div>
+          <ul>
+            <li>Dashboard that gave an 8-person team visibility into budgets and events, with role-based views and automated event tasks.</li>
+            <li>Financial audit that surfaced untracked expenses and revenue, followed by a new budget and ledger system to close the gaps.</li>
+          </ul>
         </div>
       </div>
 
@@ -128,65 +142,82 @@
 
         <div class="entry">
           <div class="entry-head">
-            <span><span class="bold">Syzygy Services</span>, Grand Rapids, MI</span>
+            <span class="bold">Syzygy Services</span>
             <span class="when">Oct 2026 – Present</span>
           </div>
-          <div class="role">AI Analyst</div>
+          <div class="sub">AI Analyst · Grand Rapids, MI</div>
           <ul>
-            <li>Technical partner to a client with no in-house IT team: map their workflows and turn findings into software fixes, process changes, and AI tools.</li>
+            <li>Technical partner to a client with no in-house IT team: meet with staff to find where their software limits day-to-day operations.</li>
+            <li>Map client workflows and turn findings into software fixes, process changes, and AI tools.</li>
             <li>Diagnose and resolve bugs in the client's internal quoting platform as part of a broader software revamp.</li>
           </ul>
         </div>
-        <br>
 
         <div class="entry">
           <div class="entry-head">
-            <span><span class="bold">The Center for Government and Civic Service</span>, Austin, TX</span>
+            <span class="bold">The Center for Government and Civic Service</span>
             <span class="when">Feb 2026 – Aug 2026</span>
           </div>
-          <div class="role">Operations Intern &amp; Strategic Planner</div>
+          <div class="sub">Operations Intern &amp; Strategic Planner · Austin, TX</div>
           <ul>
-            <li>Led a financial audit of the center's $163K annual budget, found $22K in untracked expenses and revenue, and designed a new budget and ledger system.</li>
-            <li>Spotted unused weekend capacity and co-led the strategy to secure a long-term Sunday tenant, a facilities agreement worth $90K a year.</li>
-            <li>Co-developed the next fiscal year business plan with ACC's Vice Chancellor of Strategic Initiatives to sustain $163K in annual funding.</li>
-            <li>Built and deployed a data analytics dashboard for an 8-person team.</li>
+            <li>Led a financial audit of the center's annual budget, found untracked expenses and revenue, and designed a new budget and ledger system.</li>
+            <li>Identified unused weekend capacity and co-led the strategy to secure a long-term Sunday tenant, creating a new recurring revenue stream.</li>
+            <li>Co-developed the next fiscal year business plan with ACC's Vice Chancellor of Strategic Initiatives.</li>
+            <li>Designed and deployed a data analytics dashboard for an 8-person team.</li>
           </ul>
         </div>
-        <br>
 
         <div class="entry">
           <div class="entry-head">
-            <span><span class="bold">Kerbey Lane Cafe</span>, Austin, TX</span>
+            <span class="bold">Kerbey Lane Cafe</span>
             <span class="when">Jan 2025 – Jul 2026</span>
           </div>
-          <div class="role">Server and Bartender</div>
+          <div class="sub">Server and Bartender · Austin, TX</div>
           <ul>
-            <li>Trained new hires on POS workflows and service standards, improving order accuracy and consistency.</li>
+            <li>Trained and onboarded new hires on POS workflows and service standards, improving order accuracy and consistency.</li>
           </ul>
         </div>
-        <br>
 
         <div class="entry">
           <div class="entry-head">
-            <span><span class="bold">Chick-fil-A</span>, Austin, TX</span>
+            <span class="bold">Chick-fil-A</span>
             <span class="when">Jan 2024 – Jan 2025</span>
           </div>
-          <div class="role">Team Member</div>
+          <div class="sub">Team Member · Austin, TX</div>
           <ul>
             <li>Built a demand-forecasting model for the UT football stadium location that cut food waste by over 50%.</li>
-            <li>Ran high-volume food service during UT football games, coordinating inventory and staffing at the franchise's highest-grossing location.</li>
+            <li>Managed high-volume food service during UT football games, coordinating inventory and staffing at the franchise's highest-grossing location.</li>
           </ul>
         </div>
-        <br>
 
         <div class="entry">
           <div class="entry-head">
-            <span><span class="bold">MOTIO Business Technology</span>, Grand Haven, MI</span>
+            <span class="bold">MOTIO Business Technology</span>
             <span class="when">Dec 2023 – Jan 2024</span>
           </div>
-          <div class="role">Intern</div>
+          <div class="sub">Intern · Grand Haven, MI</div>
           <ul>
-            <li>Helped deploy IT systems for a client's new operating locations and studied how IT drives efficiency in automotive manufacturing.</li>
+            <li>Assisted in deploying IT systems for a client's new operating locations.</li>
+            <li>Analyzed the role of IT systems in an automotive manufacturing environment.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="br"></div>
+
+      <!-- leadership -->
+      <div class="anchor" id="leadership">
+        <h2 class="section">Leadership</h2>
+        <div class="small-br"></div>
+
+        <div class="entry">
+          <div class="entry-head">
+            <span class="bold">UT &amp; ACC Youth and Community Studies Fellowship</span>
+            <span class="when">Dec 2024 – May 2025</span>
+          </div>
+          <div class="sub">Selected Fellow · Austin, TX</div>
+          <ul>
+            <li>Completed a program on community building and civic leadership through UT's College of Education.</li>
           </ul>
         </div>
       </div>
@@ -200,37 +231,31 @@
 
         <div class="entry">
           <div class="entry-head">
-            <span><span class="bold">University of Michigan</span>, Ann Arbor, MI</span>
+            <span class="bold">University of Michigan</span>
             <span class="when">Sep 2026 – Dec 2028 (expected)</span>
           </div>
-          <div class="role">Industrial and Operations Engineering</div>
+          <div class="sub">Industrial and Operations Engineering · Ann Arbor, MI</div>
         </div>
-        <br>
 
         <div class="entry">
           <div class="entry-head">
-            <span><span class="bold">Austin Community College</span>, Austin, TX</span>
+            <span class="bold">Austin Community College</span>
             <span class="when">Jan 2024 – Jul 2026</span>
           </div>
-          <div class="role">Honors General Studies (Mathematics and Engineering focus) · GPA 3.82/4.0</div>
-          <div>Chancellor's Honors Award, Scholastic Excellence, Phi Theta Kappa Honors Society</div>
+          <div class="sub">Honors General Studies, Mathematics and Engineering focus · Austin, TX</div>
+          <ul>
+            <li>GPA 3.82/4.0</li>
+            <li>Chancellor's Honors Award, Scholastic Excellence, Phi Theta Kappa Honors Society</li>
+          </ul>
         </div>
-        <br>
 
-        <div class="entry">
-          <div class="entry-head">
-            <span><span class="bold">UT &amp; ACC Youth and Community Studies Fellowship</span>, Austin, TX</span>
-            <span class="when">Dec 2024 – May 2025</span>
-          </div>
-          <div class="role">Selected Fellow</div>
-          <div>A program on community building and civic leadership through UT's College of Education.</div>
-        </div>
-        <br>
-
-        <div>
-          <span class="bold">Skills</span>:
-          <span class="skills">Excel (financial modeling, pivot tables, data reconciliation, dashboards), R, Mathematica, MATLAB, Python (basic)</span>
-        </div>
+        <div class="small-br"></div>
+        <h2 class="section" style="margin-top:18px">Skills</h2>
+        <div class="small-br"></div>
+        <ul class="skill-list">
+          <li><span class="bold">Excel</span>: financial modeling, pivot tables, data reconciliation, dashboards</li>
+          <li><span class="bold">Programming and math</span>: R, Mathematica, MATLAB, Python (basic)</li>
+        </ul>
       </div>
 
       <div class="br"></div>
@@ -240,13 +265,8 @@
         <h2 class="section">CV</h2>
         <div class="small-br"></div>
         <div>
-          <span class="bold">
-            <a href="_data/BrendenFogg-CV.pdf">Resume.pdf</a>
-          </span>
-          <span class="icon">
-            <a class="fa fa-file-o" aria-hidden="true" href="_data/BrendenFogg-CV.pdf"></a>
-          </span>
-          — Updated October 2026
+          <a href="_data/BrendenFogg-CV.pdf"><i class="fa fa-file-o" aria-hidden="true"></i>&nbsp; <span class="bold">Resume.pdf</span></a>
+          <span class="when">&nbsp; Updated October 2026</span>
         </div>
         <div class="br"></div>
       </div>
