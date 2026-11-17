@@ -90,13 +90,11 @@
     </article>
 
     <article class="project project--flip" id="order-check">
-      <a class="project__shot mismatch" href="projects/order-check/" data-r aria-label="Order Check case study. Example: the customer said spicy chicken sandwich meal and three sauces; the ticket was rung as chicken sandwich meal and one sauce.">
-        <span class="mismatch__row"><span class="mismatch__k">Said</span><span class="mismatch__v"><mark>Spicy</mark> chicken sandwich meal</span></span>
-        <span class="mismatch__row"><span class="mismatch__k">Rang</span><span class="mismatch__v"><del>Spicy</del> chicken sandwich meal</span></span>
-        <span class="mismatch__row"><span class="mismatch__k">Said</span><span class="mismatch__v"><mark>3</mark> sauces</span></span>
-        <span class="mismatch__row"><span class="mismatch__k">Rang</span><span class="mismatch__v"><mark class="mismatch__bad">1</mark> sauce</span></span>
-        <span class="mismatch__note">Flagged about half a second after the order is finalized</span>
-      </a>
+      <div class="project__shot" data-r>
+        <video class="project__video" data-live muted loop playsinline controls preload="none" poster="assets/order-check-video-poster.jpg" width="1920" height="1080" aria-label="Silent walkthrough of Order Check: an order is spoken, the ticket is rung in wrong, and the check flags both mistakes before the kitchen sees them.">
+          <source src="media/order-check-demo.mp4" type="video/mp4">
+        </video>
+      </div>
       <div class="project__text">
         <h3 data-r>Order Check</h3>
         <p class="meta" data-r>Personal project · 2026</p>
