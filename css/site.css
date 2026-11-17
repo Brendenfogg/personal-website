@@ -330,6 +330,6 @@ body::before { content: ""; position: fixed; inset: 0; z-index: 30; pointer-even
   .block-m.is-grabbing { cursor: grabbing; }
   .block-m__fallback { position: absolute; inset: 22% 14%; width: 72%; height: auto; }
   .block-m.is-live .block-m__fallback { display: none; }
-  .block-m__canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; outline: none; border-radius: 50%; }
+  .block-m__canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; outline: none; border-radius: var(--radius); }
   .block-m__canvas:focus-visible { box-shadow: 0 0 0 2px var(--accent); }
 }
