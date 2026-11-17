@@ -1,100 +1,38 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <title>Order Check · Brenden Fogg</title>
-
-  <!-- meta -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Order Check: an on-device AI second set of ears that catches restaurant order-entry mistakes before the kitchen sees them.">
-
-  <!-- Font Awesome (icons) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="../../_css/style.css?v=5">
-  <style>
-    /* Case-study additions; everything else comes from the site stylesheet. */
-    .lede { font-size: 19px; line-height: 1.5; color: var(--subtle); padding-top: 4px !important; }
-    .meta { color: var(--muted); font-size: 13px; }
-    .meta a { white-space: nowrap; }
-    .callout {
-      font-family: 'DM Mono', 'Courier New', Courier, monospace;
-      font-size: 13px;
-      border: 1px solid #efc7cf;
-      background: #fdf3f4;
-      padding: 12px 16px;
-      border-radius: 10px;
-      margin: 12px 0;
-    }
-    figure { margin: 18px 0 6px; }
-    figcaption { color: var(--muted); font-size: 13px; padding-top: 6px; }
-    .diagram { width: 100%; height: auto; display: block; margin: 14px 0 4px; }
-    .diagram text { font-family: 'DM Mono', 'Courier New', Courier, monospace; font-size: 12px; fill: #333333; }
-    .diagram .box { fill: #ffffff; stroke: #333333; stroke-width: 1; }
-    .diagram .accent { stroke: #c4002b; }
-    .diagram .muted { fill: #666666; font-size: 11px; }
-    .diagram line, .diagram path { stroke: #333333; stroke-width: 1; fill: none; }
-    table.results { border-collapse: collapse; width: 100%; font-size: 14px; margin: 10px 0 4px; }
-    table.results th { text-align: left; font-weight: 500; border-bottom: 1px solid #333333; padding: 6px 8px 6px 0; }
-    table.results td { border-bottom: 1px solid #e5e5e5; padding: 6px 8px 6px 0; font-variant-numeric: tabular-nums; }
-    table.results td.num, table.results th.num { text-align: right; }
-    .honest { font-weight: 500; }
-    ul.tight { margin: 4px 0; padding-left: 20px; }
-    ul.tight li { padding: 3px 0; }
-    .back { font-size: 14px; }
-    /* tighter section spacing than the home page's 80px spacer */
-    .main > .br { height: 64px; }
-    .main .anchor > p:last-child { padding-bottom: 0; }
-    figure + figure { margin-top: 26px; }
-    @media (max-width: 629px) {
-      table.results { font-size: 12.5px; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Order Check · Brenden Fogg</title>
+<meta name="description" content="Order Check: an on-device AI second set of ears that catches restaurant order-entry mistakes before the kitchen sees them.">
+<meta property="og:title" content="Order Check · Brenden Fogg">
+<meta property="og:description" content="Order Check: an on-device AI second set of ears that catches restaurant order-entry mistakes before the kitchen sees them.">
+<meta property="og:image" content="../../assets/order-check-video-poster.jpg">
+<meta name="theme-color" content="#f5f5f3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23141414'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='30' font-weight='700' text-anchor='middle' fill='%23f5f5f3'%3EBF%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/site.css">
+<link rel="stylesheet" href="../../css/case.css">
 </head>
-
 <body>
-  <a class="skip" href="#main">Skip to content</a>
-  <div class="container">
-
-    <!-- left pane -->
-    <nav class="left-pane toc" aria-label="Site">
-      <p class="name about"><a href="../../">Brenden<br>Fogg<br></a></p>
-      <div class="mobile-header">
-        <span class="about"><a href="../../">Brenden Fogg</a></span>
-      </div>
-      <button class="mobile-toggle" type="button" aria-label="Menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <div class="links">
-        <div class="visible-sm small-br"></div>
-        <a href="#problem" class="nav problem">Problem</a>
-        <div class="small-br"></div>
-        <a href="#market" class="nav market">Market</a>
-        <div class="small-br"></div>
-        <a href="#how" class="nav how">How it works</a>
-        <div class="small-br"></div>
-        <a href="#demo" class="nav demo">Demo</a>
-        <div class="small-br"></div>
-        <a href="#results" class="nav results">Results</a>
-        <div class="small-br"></div>
-        <a href="#privacy" class="nav privacy">Privacy</a>
-        <div class="small-br"></div>
-        <a href="#next" class="nav next">Next</a>
-        <div class="small-br"></div>
-        <a href="https://github.com/Brendenfogg/order-check">Code</a>
-        <div class="small-br"></div>
-        <a class="back" href="../../#projects">&larr; All projects</a>
-      </div>
-    </nav>
-
-    <!-- right pane -->
-    <main class="right-pane main" id="main">
-
-      <div class="anchor" id="top">
-        <h1 class="project-title">Order Check</h1>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar bar--case">
+  <a class="bar__mark" href="../../">Brenden Fogg</a>
+  <nav class="bar__nav" aria-label="Main">
+    <a href="../../#skills">Skills</a>
+    <a href="../../#work" aria-current="page">Work</a>
+    <a href="../../#experience">Experience</a>
+    <a href="../../#about">About</a>
+    <a href="../../data/BrendenFogg-CV.pdf">Résumé</a>
+  </nav>
+  <a class="bar__action" href="../../#contact">Contact</a>
+</header>
+<main id="main">
+<div class="case-hero">
+<img class="case-hero__img" src="../../assets/order-check-dashboard.png" width="1140" height="820" alt="Order Check's dashboard of mistakes caught, shown with demo data.">
+<h1>Order Check</h1>
         <p class="lede">
           A second set of ears for the person taking your order. Order Check is an AI-powered
           microphone that listens while an employee takes an order, compares what the guest <i>said</i> with what was <i>rung in</i>,
@@ -106,15 +44,25 @@
         </div>
         <div class="meta">
           Personal project, 2026 · Rust, Whisper (on-device speech recognition), SQLite, HTML/JS ·
-          <a href="https://github.com/Brendenfogg/order-check"><i class="fa fa-github" aria-hidden="true"></i>&nbsp;Code on GitHub</a>
+          <a href="https://github.com/Brendenfogg/order-check">Code on GitHub</a>
         </div>
-      </div>
+</div>
+<div class="case wrap grid">
+  <nav class="case__toc" aria-label="On this page">
+    <a href="#problem">Problem</a>
+    <a href="#market">Market</a>
+    <a href="#how">How it works</a>
+    <a href="#demo">Demo</a>
+    <a href="#results">Results</a>
+    <a href="#privacy">Privacy</a>
+    <a href="#next">Next</a>
+  </nav>
+  <div class="case__body">
 
-      <div class="br"></div>
 
       <!-- problem -->
       <div class="anchor" id="problem">
-        <h2 class="section">Problem</h2>
+        <h2>Problem</h2>
         <p>
           When I worked at Chick-fil-A, most order mistakes weren't dramatic. They were near-misses:
           a fat-fingered tap on the button next to the right one, spicy instead of regular, an
@@ -135,7 +83,7 @@
       <!-- how it works -->
       <!-- market -->
       <div class="anchor" id="market">
-        <h2 class="section">Market</h2>
+        <h2>Market</h2>
         <p>
           About <span class="bold">1 in 8 drive-thru orders is wrong</span>, even at the best chains.
           Intouch Insight's 2025 study measured Chick-fil-A at 87% accurate. Inaccurate orders cost an
@@ -154,17 +102,15 @@
         <p>
           A simple cost model puts the value at <span class="bold">about $5K&ndash;$30K per store per year</span>.
           The number that decides it is one nobody publishes: what share of errors start at the register
-          and not in the kitchen. That's the first question in my operator interviews. The full market,
-          competitor, cost, and recording-consent analysis is in the
-          <a href="https://github.com/Brendenfogg/order-check/blob/feat/order-check-v1/docs/business-case.md">business case</a>.
+          and not in the kitchen. That's the first question in my operator interviews.
         </p>
       </div>
 
       <div class="br"></div>
 
       <div class="anchor" id="how">
-        <h2 class="section">How it works</h2>
-        <svg class="diagram" viewBox="0 0 700 290" role="img" aria-label="An AI-powered microphone streams audio to an in-restaurant server, which transcribes it, reads the spoken order, and checks it against the POS ticket before the kitchen gets it. On a mismatch, the server buzzes the microphone.">
+        <h2>How it works</h2>
+        <div class="diagram-scroll" tabindex="0" role="group" aria-label="System diagram, scrolls sideways on small screens"><svg class="diagram" viewBox="0 0 700 290" role="img" aria-label="An AI-powered microphone streams audio to an in-restaurant server, which transcribes it, reads the spoken order, and checks it against the POS ticket before the kitchen gets it. On a mismatch, the server buzzes the microphone.">
           <defs>
             <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
               <path d="M0 0 L10 5 L0 10" fill="none" stroke="#333333" stroke-width="1.5"/>
@@ -208,7 +154,8 @@
           <!-- feedback: server buzzes the microphone on a mismatch -->
           <path d="M335 240 L335 262 L75 262 L75 167" marker-end="url(#arrow)"/>
           <text class="muted" x="205" y="278" text-anchor="middle" dominant-baseline="middle">buzzes the mic on a mismatch</text>
-        </svg>
+        </svg></div>
+        <p class="meta diagram-hint">Scroll sideways to see the whole diagram.</p>
         <p>
           Listening starts when the employee enters the car (drive-thru) or the guest's name (counter),
           and stops at Finalize. The check has three answers, not two. A confident <span class="bold">mismatch</span>
@@ -226,16 +173,16 @@
 
       <!-- demo -->
       <div class="anchor" id="demo">
-        <h2 class="section">Demo</h2>
+        <h2>Demo</h2>
 
         <figure>
-          <video aria-label="Order Check demo walkthrough" src="../../_media/order-check-demo.mp4" poster="../../_images/order-check-video-poster.jpg"
+          <video aria-label="Order Check demo walkthrough" src="../../media/order-check-demo.mp4" poster="../../assets/order-check-video-poster.jpg"
                  width="1920" height="1080" controls playsinline preload="none"></video>
           <figcaption>Walkthrough: the problem, how it works, a live catch, and the manager dashboard (demo data), shown with a generic burger-and-chicken menu. Swap in any restaurant's menu file.</figcaption>
         </figure>
 
         <figure>
-          <img src="../../_images/order-check-pos.png" alt="Mock POS showing a drive-thru ticket with a chicken sandwich meal and one Polynesian sauce, and an alert: Said SPICY CHICKEN SANDWICH MEAL, rang CHICKEN SANDWICH MEAL; Said 3 Polynesian, rang 1.">
+          <img loading="lazy" decoding="async" src="../../assets/order-check-pos.png" width="1240" height="800" alt="Mock POS showing a drive-thru ticket with a chicken sandwich meal and one Polynesian sauce, and an alert: Said SPICY CHICKEN SANDWICH MEAL, rang CHICKEN SANDWICH MEAL; Said 3 Polynesian, rang 1.">
           <figcaption>
             The guest asked for a spicy chicken sandwich meal and three Polynesian sauces. The ticket says regular and one.
             The alert shows the real check result for that spoken order. The mock POS is modeled on the Chick-fil-A screen, without logos.
@@ -243,7 +190,7 @@
         </figure>
 
         <figure>
-          <img src="../../_images/order-check-dashboard.png" alt="Restaurant dashboard with orders checked, share of orders with a mistake caught, mistakes by hour and type, and the most mixed-up items.">
+          <img loading="lazy" decoding="async" src="../../assets/order-check-dashboard.png" width="1140" height="820" alt="Restaurant dashboard with orders checked, share of orders with a mistake caught, mistakes by hour and type, and the most mixed-up items.">
           <figcaption>
             Restaurant-level dashboard (shown with clearly labeled demo data): mistakes caught by hour and type,
             the most mixed-up items, and fix rate. No employee names and no conversations are stored.
@@ -255,14 +202,14 @@
 
       <!-- results -->
       <div class="anchor" id="results">
-        <h2 class="section">Results</h2>
+        <h2>Results</h2>
         <p>
           I built a test set of scripted orders, spoken by 16 synthetic voices, in two situations (face-to-face,
           and headset, where only the employee's read-back is heard) and at three noise levels. Every order is
           checked against its correct ticket and against tickets with planted mistakes of every kind.
         </p>
         <table class="results">
-          <tr><th>Clean audio, default model</th><th class="num">Mistakes caught</th><th class="num">False alarms</th></tr>
+          <tr><th scope="col">Clean audio, default model</th><th class="num" scope="col">Mistakes caught</th><th class="num" scope="col">False alarms</th></tr>
           <tr><td>Orders I tuned the rules on</td><td class="num">96%</td><td class="num">3%</td></tr>
           <tr class="honest"><td>New orders it never saw</td><td class="num">81%</td><td class="num">35%</td></tr>
         </table>
@@ -284,7 +231,7 @@
 
       <!-- privacy -->
       <div class="anchor" id="privacy">
-        <h2 class="section">Privacy by design</h2>
+        <h2>Privacy by design</h2>
         <ul class="tight">
           <li>Audio is never saved. Speech recognition runs on the device; nothing goes to the cloud.</li>
           <li>Transcripts live in memory only until the order is sent, then they're deleted.</li>
@@ -298,7 +245,7 @@
 
       <!-- next -->
       <div class="anchor" id="next">
-        <h2 class="section">What's next</h2>
+        <h2>What's next</h2>
         <ul class="tight">
           <li>Record real orders and re-run the evaluation on them</li>
           <li>Replace the hand-written order reader with a small local language model, judged on the held-out set</li>
@@ -310,11 +257,19 @@
         <div class="br"></div>
       </div>
 
-      <div class="abyss"></div>
-    </main>
-
+      
+    
   </div>
-
-  <script src="../../_js/main.js?v=4"></script>
+</div>
+</main>
+<footer class="case-foot">
+  <p>Next project</p>
+  <a class="case-foot__next" href="../cgcs-hub/">Command Hub</a>
+  <ul>
+    <li><a class="link" href="../../#work">All work</a></li>
+    <li><a class="link" href="mailto:fogg.brenden@gmail.com">fogg.brenden@gmail.com</a></li>
+    <li><a class="link" href="../../data/BrendenFogg-CV.pdf">Résumé (PDF)</a></li>
+  </ul>
+</footer>
 </body>
 </html>

@@ -1,2 +1,5 @@
 .gstack/
 .DS_Store
+.taste-skill/
+.claude/
+tools/dtw-security/cache/

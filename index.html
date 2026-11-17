@@ -1,306 +1,236 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <title>Brenden Fogg</title>
-
-  <!-- meta -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Brenden Fogg: Industrial and Operations Engineering student at the University of Michigan and AI Analyst at Syzygy Services.">
-
-  <!-- Font Awesome (icons) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="_css/style.css?v=5">
-  <style>
-    /* One layout for every entry: title + date, subtitle, bullets, links */
-    .entry { margin-bottom: 40px; }
-    .entry:last-child { margin-bottom: 0; }
-    .entry-head { display: flex; justify-content: space-between; align-items: baseline; gap: 4px 16px; flex-wrap: wrap; }
-    .entry-head .bold { color: var(--ink-strong); }
-    .when { color: var(--muted); font-size: 13px; white-space: nowrap; font-variant-numeric: tabular-nums; }
-    .sub { color: var(--subtle); font-style: italic; }
-    .entry ul { margin: 8px 0 0; padding-left: 18px; }
-    .entry li { padding: 2px 0; }
-    .entry-links { margin-top: 8px; font-size: 14px; }
-    .entry-links a { margin-right: 16px; }
-    .entry-links .fa { margin-right: 5px; }
-    .facts { display: grid; grid-template-columns: max-content 1fr; gap: 2px 14px; margin: 18px 0 0; font-size: 14px; }
-    .facts dt { font-weight: 500; }
-    .facts dd { margin: 0; }
-    .skill-list { margin: 0; padding-left: 18px; }
-    .skill-list li { padding: 2px 0; }
-    .resume { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-    @media (max-width: 629px) {
-      /* Stack the date under the title so every entry reads the same way */
-      .entry-head { flex-direction: column; gap: 0; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brenden Fogg · Operations and analytics</title>
+<meta name="description" content="Brenden Fogg studies Industrial and Operations Engineering at the University of Michigan and works as an AI Analyst. He measures how work really runs, then improves it with data and software.">
+<meta property="og:title" content="Brenden Fogg · Operations and analytics">
+<meta property="og:description" content="Industrial and Operations Engineering at Michigan. AI Analyst at Syzygy Services. Process improvement, analytics and applied AI.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/order-check-dashboard.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f5f5f3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23141414'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='30' font-weight='700' text-anchor='middle' fill='%23f5f5f3'%3EBF%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<!--
+  Hello, source reader. People who look this hard usually like to play.
+  Type the word "rush" anywhere on the page.
+-->
 </head>
-
 <body>
-  <a class="skip" href="#main">Skip to content</a>
-  <div class="container">
+<a class="skip" href="#main">Skip to content</a>
 
-    <!-- left pane -->
-    <nav class="left-pane toc" aria-label="Site">
-      <h1 class="name about">Brenden<br>Fogg<br></h1>
-      <div class="mobile-header">
-        <span class="about">Brenden Fogg</span>
+<header class="bar">
+  <a class="bar__mark" href="#top">Brenden Fogg</a>
+  <nav class="bar__nav" aria-label="Main">
+    <a href="#skills">Skills</a>
+    <a href="#work">Work</a>
+    <a href="#experience">Experience</a>
+    <a href="#about">About</a>
+    <a href="data/BrendenFogg-CV.pdf">Résumé</a>
+  </nav>
+  <a class="bar__action" href="#contact">Contact</a>
+</header>
+
+<main id="main">
+
+  <section class="hero wrap" id="top">
+    <h1 class="hero__name">Brenden Fogg</h1>
+    <div class="hero__text">
+      <p class="hero__role">Industrial and Operations Engineering at the University of Michigan (B.S.E. expected Dec 2028). AI Analyst at Syzygy Services.</p>
+      <p class="hero__statement">I find the gap between how work is supposed to run and how it actually runs, then close it with data and software. Looking for roles in operations, process improvement and analytics.</p>
+      <p class="hero__actions">
+        <a class="button" href="mailto:fogg.brenden@gmail.com?subject=Hello%20from%20your%20site">Email me</a>
+        <a class="button button--quiet" href="data/BrendenFogg-CV.pdf">Résumé (PDF)</a>
+      </p>
+    </div>
+    <ul class="hero__results" aria-label="Results so far">
+      <li><b class="nums">50%</b><span>or more of waste cut, after inventory followed a demand forecast I built</span></li>
+      <li><b class="nums">81%</b><span>of planted mistakes caught by an AI checker I built, on orders it had never seen</span></li>
+      <li><b class="nums">8</b><span>people running a civic center from a dashboard I designed and deployed, plus a budget audit that found untracked money</span></li>
+    </ul>
+  </section>
+
+  <section class="skills band" id="skills">
+    <div class="wrap split">
+      <h2 class="heading" data-r>Skills</h2>
+      <dl class="skills__list">
+        <div class="skills__tools" data-r><dt>Tools</dt><dd><ul><li>Excel</li><li>R</li><li>MATLAB</li><li>Mathematica</li><li>Rust</li><li>JavaScript</li><li>Python (basic)</li><li>SQLite</li><li>Whisper</li><li>Claude API</li></ul></dd></div>
+        <div data-r><dt>Process improvement</dt><dd>Map how work really flows, find the waste, and turn findings into process changes and software fixes. Client workflows at Syzygy.</dd></div>
+        <div data-r><dt>Forecasting and modeling</dt><dd>Built a multivariable demand model that cut waste by over 50%.</dd></div>
+        <div data-r><dt>Financial analysis</dt><dd>Audited an annual budget, found untracked expenses and revenue, and designed the new ledger system.</dd></div>
+        <div data-r><dt>Data and dashboards</dt><dd>Excel (financial modeling, pivot tables, reconciliation), and an analytics dashboard used by a team of eight.</dd></div>
+        <div data-r><dt>Applied AI</dt><dd>Speech recognition with Whisper, the Claude API, and evaluation on held-out test sets.</dd></div>
+        <div data-r><dt>Working with people</dt><dd>Interviewing staff, co-writing a business plan with a vice chancellor, training new hires.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="work wrap" id="work">
+    <h2 class="heading" data-r>Selected work</h2>
+
+    <article class="project" id="command-hub">
+      <a class="project__shot" href="projects/cgcs-hub/" data-r>
+        <img src="assets/cgcs-hub-assistant.jpg" width="926" height="530" alt="The Command Hub's AI assistant answering a staff question from the center's standard operating procedures." loading="lazy" decoding="async">
+      </a>
+      <div class="project__text">
+        <h3 data-r>Command Hub</h3>
+        <p class="meta" data-r>Center for Government and Civic Service · 2026</p>
+        <p data-r>One browser tab for running a college civic center: the director's email, calendar, team, objectives and procedures on a single dashboard for a team of eight, with an AI assistant that answers from the standard operating procedures first.</p>
+        <p data-r>Alongside it I led a financial audit of the annual budget. It surfaced untracked expenses and revenue, and I designed a new budget and ledger system to close the gaps.</p>
+        <p class="tags" data-r>JavaScript · Cloudflare Pages · Google and Claude APIs</p>
+        <p data-r><a class="link" href="projects/cgcs-hub/">Read the case study</a></p>
       </div>
-      <button class="mobile-toggle" type="button" aria-label="Menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <div class="links">
-        <div class="visible-sm small-br"></div>
-        <a href="#projects" class="nav projects">Projects</a>
-        <div class="small-br"></div>
-        <a href="#experience" class="nav experience">Experience</a>
-        <div class="small-br"></div>
-        <a href="#leadership" class="nav leadership">Leadership</a>
-        <div class="small-br"></div>
-        <a href="#education" class="nav education">Education</a>
-        <div class="small-br"></div>
-        <a href="#cv" class="nav cv">CV</a>
-        <div class="small-br"></div>
-        <a href="https://linkedin.com/in/brendenfogg">LinkedIn</a>
-        <div class="small-br"></div>
-        <a href="https://github.com/Brendenfogg">GitHub</a>
+    </article>
+
+    <article class="project project--flip" id="order-check">
+      <a class="project__shot mismatch" href="projects/order-check/" data-r aria-label="Order Check case study. Example: the customer said spicy chicken sandwich meal and three sauces; the ticket was rung as chicken sandwich meal and one sauce.">
+        <span class="mismatch__row"><span class="mismatch__k">Said</span><span class="mismatch__v"><mark>Spicy</mark> chicken sandwich meal</span></span>
+        <span class="mismatch__row"><span class="mismatch__k">Rang</span><span class="mismatch__v"><del>Spicy</del> chicken sandwich meal</span></span>
+        <span class="mismatch__row"><span class="mismatch__k">Said</span><span class="mismatch__v"><mark>3</mark> sauces</span></span>
+        <span class="mismatch__row"><span class="mismatch__k">Rang</span><span class="mismatch__v"><mark class="mismatch__bad">1</mark> sauce</span></span>
+        <span class="mismatch__note">Flagged about half a second after the order is finalized</span>
+      </a>
+      <div class="project__text">
+        <h3 data-r>Order Check</h3>
+        <p class="meta" data-r>Personal project · 2026</p>
+        <p data-r>An AI tool that listens while an order is entered and flags the ticket when it doesn't match what the customer said. The person stays in charge; the AI only points at the mismatch.</p>
+        <p data-r>I tested it on 1,500 checks across 16 synthetic voices and three noise levels. It caught 96% of mistakes on the orders I tuned it with and 81% on a held-out set, where false alarms rose to 35%. I report the harder numbers, and the case study explains why.</p>
+        <p class="tags" data-r>Rust · Whisper speech recognition · SQLite</p>
+        <p class="project__links" data-r><a class="link" href="projects/order-check/">Read the case study</a><a class="link" href="https://github.com/Brendenfogg/order-check">Code on GitHub</a></p>
       </div>
-    </nav>
+    </article>
 
-    <!-- right pane -->
-    <main class="right-pane main" id="main">
+    <article class="project project--plain" id="forecast">
+      <div class="project__text">
+        <h3 data-r>Demand forecast</h3>
+        <p class="meta" data-r>Chick-fil-A, Austin · 2024</p>
+      </div>
+      <div class="project__text">
+        <p data-r>A multivariable model, built from historical sales and event-day data, that told a high-volume stadium location how much inventory to prepare for each game.</p>
+        <p class="tags" data-r>Prediction model · Inventory planning</p>
+      </div>
+      <p class="project__figure nums" data-r><b>&gt;50%</b><span>less waste</span></p>
+    </article>
+  </section>
 
-      <!-- about -->
-      <div class="anchor" id="about">
-        <img class="portrait" src="_images/profile.png" alt="Brenden Fogg" width="128" height="166">
-        <h2 class="hello">Hello! I'm Brenden.</h2>
-        <p class="intro">
-          I study Industrial and Operations Engineering at the University of Michigan
-          and work as an AI Analyst at Syzygy Services.
-        </p>
-        <p>
-          I'm interested in how businesses actually run, and how engineering can make them
-          run better. The problems I care about live in the gap between how a process is
-          supposed to work and how it works on a busy day: the extra steps, the missing
-          numbers, the decisions made on instinct because the data isn't there.
-        </p>
-        <p>
-          My approach is the IOE toolkit. Start with the people doing the work, measure what
-          is really happening, then use data, optimization, and well-built software to remove
-          waste and make good decisions easier. I'm looking for work in operations, process
-          improvement, and analytics where that moves the numbers that matter: cost, time,
-          quality, and the experience of the people involved.
-        </p>
-        <dl class="facts">
-          <dt>Email</dt><dd><a class="inline" href="mailto:fogg.brenden@gmail.com">fogg.brenden@gmail.com</a></dd>
-          <dt>Based in</dt><dd>Ann Arbor, Michigan</dd>
-          <dt>Resume</dt><dd><a class="inline" href="_data/BrendenFogg-CV.pdf">PDF, updated October 2026</a></dd>
+  <section class="approach band" id="approach">
+    <div class="wrap">
+      <h2 class="heading" data-r>How I work</h2>
+      <ol class="approach__steps">
+        <li data-r><h3>Watch</h3><p>Start with the people doing the work, and see the process as it runs on a busy day.</p></li>
+        <li data-r><h3>Measure</h3><p>Count what really happens: the rework, the leftovers, the expenses nobody was tracking.</p></li>
+        <li data-r><h3>Fix</h3><p>Remove the waste with data, optimization and software people will actually use.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="xp wrap" id="experience">
+    <h2 class="heading" data-r>Experience</h2>
+    <ol class="xp__rows">
+      <li class="xp__row" data-r>
+        <div class="xp__head">
+          <h3>AI Analyst</h3>
+          <p>Syzygy Services</p>
+          <p class="meta">Oct 2026 – Present · Grand Rapids, MI</p>
+        </div>
+        <ul>
+          <li>Technical partner to a client with no in-house IT team: I meet with staff to find where their software limits day-to-day operations.</li>
+          <li>Map client workflows and turn the findings into software fixes, process changes and AI tools.</li>
+          <li>Diagnose and resolve bugs in the client's internal quoting platform as part of a broader software revamp.</li>
+        </ul>
+      </li>
+      <li class="xp__row" data-r>
+        <div class="xp__head">
+          <h3>Operations Intern and Strategic Planner</h3>
+          <p>The Center for Government and Civic Service</p>
+          <p class="meta">Feb 2026 – Aug 2026 · Austin, TX</p>
+        </div>
+        <ul>
+          <li>Led a financial audit of the annual budget, found untracked expenses and revenue, and designed a new budget and ledger system.</li>
+          <li>Identified unused weekend capacity and co-led the strategy that secured a long-term Sunday tenant, a new recurring revenue stream.</li>
+          <li>Co-developed the next fiscal year's business plan with ACC's Vice Chancellor of Strategic Initiatives.</li>
+          <li>Designed and deployed a data analytics dashboard for an 8-person team.</li>
+        </ul>
+      </li>
+      <li class="xp__row" data-r>
+        <div class="xp__head">
+          <h3>Selected Fellow</h3>
+          <p>UT and ACC Youth and Community Studies Fellowship</p>
+          <p class="meta">Dec 2024 – May 2025 · Austin, TX</p>
+        </div>
+        <ul>
+          <li>Completed a program on community building and civic leadership through UT's College of Education.</li>
+        </ul>
+      </li>
+      <li class="xp__row" data-r>
+        <div class="xp__head">
+          <h3>Intern</h3>
+          <p>MOTIO Business Technology</p>
+          <p class="meta">Dec 2023 – Jan 2024 · Grand Haven, MI</p>
+        </div>
+        <ul>
+          <li>Assisted in deploying IT systems for a client's new operating locations.</li>
+          <li>Analyzed the role of IT systems in an automotive manufacturing environment.</li>
+        </ul>
+      </li>
+      <li class="xp__row" data-r>
+        <div class="xp__head">
+          <h3>Service roles</h3>
+          <p>Chick-fil-A and Kerbey Lane Cafe</p>
+          <p class="meta">Jan 2024 – Jul 2026 · Austin, TX</p>
+        </div>
+        <ul>
+          <li>Built the demand-forecasting model above, and coordinated inventory and staffing at a franchise's highest-grossing location.</li>
+          <li>Trained and onboarded new hires on point-of-sale workflows and service standards.</li>
+        </ul>
+      </li>
+    </ol>
+  </section>
+
+  <section class="about band" id="about">
+    <div class="wrap split">
+      <h2 class="heading" data-r>About</h2>
+      <div class="about__body">
+        <p class="lead" data-r>I care about how businesses actually run: the extra steps, the missing numbers, the decisions made on instinct because the data isn't there.</p>
+        <dl class="school">
+          <div data-r>
+            <dt>University of Michigan</dt>
+            <dd>B.S.E. Industrial and Operations Engineering<br><span class="meta">Ann Arbor, MI · Sep 2026 – Dec 2028 (expected)</span></dd>
+          </div>
+          <div data-r>
+            <dt>Austin Community College</dt>
+            <dd>Honors General Studies, mathematics and engineering focus · GPA 3.82<br><span class="meta">Austin, TX · Jan 2024 – Jul 2026 · Chancellor's Honors Award, Scholastic Excellence, Phi Theta Kappa</span></dd>
+          </div>
         </dl>
       </div>
+    </div>
+  </section>
 
-      <div class="br"></div>
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <h2 class="contact__ask">Hiring for operations, process improvement or analytics? Write to me.</h2>
+      <a class="contact__email" href="mailto:fogg.brenden@gmail.com">fogg.brenden@<wbr>gmail.com</a>
+      <ul class="contact__more">
+        <li class="contact__copy"><button class="button button--light" type="button" id="copy-email" data-email="fogg.brenden@gmail.com" aria-live="polite" hidden>Copy email address</button></li>
+        <li><a class="link" href="https://linkedin.com/in/brendenfogg">LinkedIn</a></li>
+        <li><a class="link" href="https://github.com/Brendenfogg">GitHub</a></li>
+        <li><a class="link" href="data/BrendenFogg-CV.pdf">Résumé (PDF), updated October 2026</a></li>
+        <li>Ann Arbor, Michigan</li>
+      </ul>
+    </div>
+  </section>
+</main>
 
-      <!-- projects -->
-      <div class="anchor" id="projects">
-        <h2 class="section">Projects</h2>
-        <div class="small-br"></div>
+<footer class="foot wrap">
+  <p>© 2026 Brenden Fogg. Built by hand in plain HTML, CSS and JavaScript.</p>
+  <p><a class="foot__top" href="#top">Back to top</a><button type="button" class="foot__rush" data-rush aria-label="P.S." hidden>P.S.</button></p>
+</footer>
 
-        <div class="entry">
-          <div class="entry-head">
-            <a href="projects/order-check/"><span class="bold">Order Check</span></a>
-            <span class="when">Personal project · 2026</span>
-          </div>
-          <div class="sub">On-device AI · Rust · Whisper speech recognition</div>
-          <ul>
-            <li>Listens while an order is taken, compares what the guest said with what was rung in, and flags mistakes before the kitchen sees them.</li>
-            <li>Evaluated on 1,500 spoken-order checks, including a held-out test that exposed where the approach needs to go next.</li>
-          </ul>
-          <div class="entry-links">
-            <a href="projects/order-check/"><i class="fa fa-file-text-o" aria-hidden="true"></i>Case study</a>
-            <a href="https://github.com/Brendenfogg/order-check"><i class="fa fa-github" aria-hidden="true"></i>Code</a>
-          </div>
-        </div>
-
-        <div class="entry">
-          <div class="entry-head">
-            <span class="bold">Game-day demand forecasting</span>
-            <span class="when">Chick-fil-A · 2024</span>
-          </div>
-          <div class="sub">Prediction model · inventory planning</div>
-          <ul>
-            <li>Multivariable model built from historical sales and game-day event data to guide inventory at the UT football stadium location.</li>
-            <li>Cut food waste by over 50%.</li>
-          </ul>
-        </div>
-
-        <div class="entry">
-          <div class="entry-head">
-            <a href="projects/cgcs-hub/"><span class="bold">Operations dashboard and budget redesign</span></a>
-            <span class="when">CGCS · 2026</span>
-          </div>
-          <div class="sub">Data analytics · financial operations</div>
-          <ul>
-            <li>Dashboard that gave an 8-person team visibility into budgets and events, with role-based views and automated event tasks.</li>
-            <li>Financial audit that surfaced untracked expenses and revenue, followed by a new budget and ledger system to close the gaps.</li>
-          </ul>
-          <div class="entry-links">
-            <a href="projects/cgcs-hub/"><i class="fa fa-file-text-o" aria-hidden="true"></i>Case study</a>
-            <a href="projects/cgcs-hub/#demo"><i class="fa fa-play-circle-o" aria-hidden="true"></i>Video walkthrough</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="br"></div>
-
-      <!-- experience -->
-      <div class="anchor" id="experience">
-        <h2 class="section">Experience</h2>
-        <div class="small-br"></div>
-
-        <div class="entry">
-          <div class="entry-head">
-            <span class="bold">Syzygy Services</span>
-            <span class="when">Oct 2026 – Present</span>
-          </div>
-          <div class="sub">AI Analyst · Grand Rapids, MI</div>
-          <ul>
-            <li>Technical partner to a client with no in-house IT team: meet with staff to find where their software limits day-to-day operations.</li>
-            <li>Map client workflows and turn findings into software fixes, process changes, and AI tools.</li>
-            <li>Diagnose and resolve bugs in the client's internal quoting platform as part of a broader software revamp.</li>
-          </ul>
-        </div>
-
-        <div class="entry">
-          <div class="entry-head">
-            <span class="bold">The Center for Government and Civic Service</span>
-            <span class="when">Feb 2026 – Aug 2026</span>
-          </div>
-          <div class="sub">Operations Intern &amp; Strategic Planner · Austin, TX</div>
-          <ul>
-            <li>Led a financial audit of the center's annual budget, found untracked expenses and revenue, and designed a new budget and ledger system.</li>
-            <li>Identified unused weekend capacity and co-led the strategy to secure a long-term Sunday tenant, creating a new recurring revenue stream.</li>
-            <li>Co-developed the next fiscal year business plan with ACC's Vice Chancellor of Strategic Initiatives.</li>
-            <li>Designed and deployed a data analytics dashboard for an 8-person team.</li>
-          </ul>
-        </div>
-
-        <div class="entry">
-          <div class="entry-head">
-            <span class="bold">Kerbey Lane Cafe</span>
-            <span class="when">Jan 2025 – Jul 2026</span>
-          </div>
-          <div class="sub">Server and Bartender · Austin, TX</div>
-          <ul>
-            <li>Trained and onboarded new hires on POS workflows and service standards, improving order accuracy and consistency.</li>
-          </ul>
-        </div>
-
-        <div class="entry">
-          <div class="entry-head">
-            <span class="bold">Chick-fil-A</span>
-            <span class="when">Jan 2024 – Jan 2025</span>
-          </div>
-          <div class="sub">Team Member · Austin, TX</div>
-          <ul>
-            <li>Built a demand-forecasting model for the UT football stadium location that cut food waste by over 50%.</li>
-            <li>Managed high-volume food service during UT football games, coordinating inventory and staffing at the franchise's highest-grossing location.</li>
-          </ul>
-        </div>
-
-        <div class="entry">
-          <div class="entry-head">
-            <span class="bold">MOTIO Business Technology</span>
-            <span class="when">Dec 2023 – Jan 2024</span>
-          </div>
-          <div class="sub">Intern · Grand Haven, MI</div>
-          <ul>
-            <li>Assisted in deploying IT systems for a client's new operating locations.</li>
-            <li>Analyzed the role of IT systems in an automotive manufacturing environment.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="br"></div>
-
-      <!-- leadership -->
-      <div class="anchor" id="leadership">
-        <h2 class="section">Leadership</h2>
-        <div class="small-br"></div>
-
-        <div class="entry">
-          <div class="entry-head">
-            <span class="bold">UT &amp; ACC Youth and Community Studies Fellowship</span>
-            <span class="when">Dec 2024 – May 2025</span>
-          </div>
-          <div class="sub">Selected Fellow · Austin, TX</div>
-          <ul>
-            <li>Completed a program on community building and civic leadership through UT's College of Education.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="br"></div>
-
-      <!-- education -->
-      <div class="anchor" id="education">
-        <h2 class="section">Education</h2>
-        <div class="small-br"></div>
-
-        <div class="entry">
-          <div class="entry-head">
-            <span class="bold">University of Michigan</span>
-            <span class="when">Sep 2026 – Dec 2028 (expected)</span>
-          </div>
-          <div class="sub">Industrial and Operations Engineering · Ann Arbor, MI</div>
-        </div>
-
-        <div class="entry">
-          <div class="entry-head">
-            <span class="bold">Austin Community College</span>
-            <span class="when">Jan 2024 – Jul 2026</span>
-          </div>
-          <div class="sub">Honors General Studies, Mathematics and Engineering focus · Austin, TX</div>
-          <ul>
-            <li>GPA 3.82/4.0</li>
-            <li>Chancellor's Honors Award, Scholastic Excellence, Phi Theta Kappa Honors Society</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="br"></div>
-
-      <!-- skills -->
-      <div class="anchor" id="skills">
-        <h2 class="section">Skills</h2>
-        <div class="small-br"></div>
-        <ul class="skill-list">
-          <li><span class="bold">Excel</span>: financial modeling, pivot tables, data reconciliation, dashboards</li>
-          <li><span class="bold">Programming and math</span>: R, Mathematica, MATLAB, Python (basic)</li>
-        </ul>
-      </div>
-
-      <div class="br"></div>
-
-      <!-- cv -->
-      <div class="anchor" id="cv">
-        <h2 class="section">CV</h2>
-        <div class="small-br"></div>
-        <div class="resume">
-          <a href="_data/BrendenFogg-CV.pdf"><i class="fa fa-file-o" aria-hidden="true"></i>&nbsp; <span class="bold">Resume.pdf</span></a>
-          <span class="when">Updated October 2026</span>
-        </div>
-      </div>
-
-      <div class="abyss"></div>
-    </main>
-
-  </div>
-
-  <script src="_js/main.js?v=4"></script>
+<script src="js/site.js" defer></script>
 </body>
 </html>
