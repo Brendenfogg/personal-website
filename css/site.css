@@ -101,6 +101,8 @@ p { max-width: 64ch; text-wrap: pretty; }
 .project--flip .project__shot { order: 2; }
 .project__shot { display: block; background: var(--surface); padding: clamp(0.75rem, 2vw, 1.75rem); border-radius: var(--radius); transition: background-color 200ms; }
 .project__shot img { width: 100%; border-radius: 4px; transition: transform 400ms var(--ease-out); }
+.project__video { width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 4px; background: var(--ink); }
+div.project__shot:hover { background: var(--surface); }
 .project__shot:hover { background: #dfdfdb; }
 .project__shot:hover img { transform: scale(1.012); }
 .project__text { display: grid; gap: 0.8rem; align-content: start; }
