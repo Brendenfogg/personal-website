@@ -85,6 +85,84 @@
     document.addEventListener('visibilitychange', function () { if (document.hidden) vids.forEach(function (v) { v.pause(); }); });
   }
 
-  function init() { setupSpy(); setupCopy(); setupRush(); setupLiveVideos(); }
+  /* ---------- skills light up the work behind them ---------- */
+  function setupSkillLinks() {
+    var marked = [];
+    var clear = function () {
+      marked.forEach(function (el) { el.classList.remove('is-match'); });
+      marked = [];
+      $$('.skill.is-active').forEach(function (s) { s.classList.remove('is-active'); });
+    };
+    var mark = function (src) {
+      clear();
+      if (src.classList.contains('skill')) src.classList.add('is-active');
+      (src.dataset.targets || '').split(' ').forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) { el.classList.add('is-match'); marked.push(el); }
+      });
+    };
+    $$('.skill[data-targets], .chip[data-targets]').forEach(function (src) {
+      src.addEventListener('mouseenter', function () { mark(src); });
+      src.addEventListener('mouseleave', clear);
+      src.addEventListener('focusin', function () { mark(src); });
+      src.addEventListener('focusout', clear);
+    });
+  }
+
+  /* ---------- experience timeline fills as you read ---------- */
+  function setupTimeline() {
+    var list = $('.xp__rows');
+    var fill = $('.xp__fill');
+    if (!list || !fill) return;
+    var rows = $$('.xp__row', list);
+    var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (still) { rows.forEach(function (r) { r.classList.add('is-reached'); }); return; }
+    var ticking = false;
+    var update = function () {
+      ticking = false;
+      var mid = window.innerHeight * 0.55;
+      var r = list.getBoundingClientRect();
+      var p = Math.max(0, Math.min(1, (mid - r.top) / r.height));
+      fill.style.setProperty('--fill', p.toFixed(3));
+      rows.forEach(function (row) { row.classList.toggle('is-reached', row.getBoundingClientRect().top + 24 < mid); });
+    };
+    fill.style.setProperty('--fill', '0');
+    window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  }
+
+  /* ---------- Poker: the word "poker" opens a table, loaded on demand ---------- */
+  var pokerLoading = false;
+  function loadScript(src, done) {
+    var s = document.createElement('script');
+    s.src = src;
+    s.onload = done;
+    s.onerror = function () { pokerLoading = false; };
+    document.head.appendChild(s);
+  }
+  function openPoker() {
+    if (window.Poker) { window.Poker.open(); return; }
+    if (pokerLoading) return;
+    pokerLoading = true;
+    loadScript('js/poker-engine.js', function () {
+      loadScript('js/poker.js', function () { pokerLoading = false; if (window.Poker) window.Poker.open(); });
+    });
+  }
+  window.poker = openPoker;
+  function setupPoker() {
+    $$('.poker-word[data-poker]').forEach(function (span) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'poker-link';
+      b.textContent = span.textContent;
+      b.setAttribute('aria-label', 'poker (opens a poker game)');
+      b.addEventListener('click', openPoker);
+      span.replaceWith(b);
+    });
+    if (window.location.hash === '#poker') openPoker();
+  }
+
+  function init() { setupSpy(); setupCopy(); setupRush(); setupLiveVideos(); setupSkillLinks(); setupTimeline(); setupPoker(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();

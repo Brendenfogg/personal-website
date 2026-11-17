@@ -39,7 +39,12 @@
 <main id="main">
 
   <section class="hero wrap" id="top">
-    <h1 class="hero__name">Brenden Fogg</h1>
+    <div class="hero__title">
+      <h1 class="hero__name">Brenden Fogg</h1>
+    </div>
+    <div class="block-m" data-block-m data-src="assets/3d/block-m.glb">
+      <img class="block-m__fallback" src="assets/logos/michigan.png" width="417" height="315" alt="University of Michigan Block M">
+    </div>
     <div class="hero__text">
       <p class="hero__role">Industrial and Operations Engineering at the University of Michigan (B.S.E. expected Dec 2028). AI Analyst at Syzygy Services.</p>
       <p class="hero__statement">I find the gap between how work is supposed to run and how it actually runs, then close it with data and software. Looking for roles in operations, process improvement and analytics.</p>
@@ -59,13 +64,13 @@
     <div class="wrap split">
       <h2 class="heading" data-r>Skills</h2>
       <dl class="skills__list">
-        <div class="skills__tools" data-r><dt>Tools</dt><dd><ul><li>Excel</li><li>R</li><li>MATLAB</li><li>Mathematica</li><li>Rust</li><li>JavaScript</li><li>Python (basic)</li><li>SQLite</li><li>Whisper</li><li>Claude API</li></ul></dd></div>
-        <div data-r><dt>Process improvement</dt><dd>Map how work really flows, find the waste, and turn findings into process changes and software fixes. Client workflows at Syzygy.</dd></div>
-        <div data-r><dt>Forecasting and modeling</dt><dd>Built a multivariable demand model that cut waste by over 50%.</dd></div>
-        <div data-r><dt>Financial analysis</dt><dd>Audited an annual budget, found untracked expenses and revenue, and designed the new ledger system.</dd></div>
-        <div data-r><dt>Data and dashboards</dt><dd>Excel (financial modeling, pivot tables, reconciliation), and an analytics dashboard used by a team of eight.</dd></div>
-        <div data-r><dt>Applied AI</dt><dd>Speech recognition with Whisper, the Claude API, and evaluation on held-out test sets.</dd></div>
-        <div data-r><dt>Working with people</dt><dd>Interviewing staff, co-writing a business plan with a vice chancellor, training new hires.</dd></div>
+        <div class="skills__tools" data-r><dt>Tools</dt><dd><ul><li>Excel</li><li>R</li><li>MATLAB</li><li>Mathematica</li><li><a class="chip" href="#order-check" data-targets="order-check">Rust</a></li><li><a class="chip" href="#command-hub" data-targets="command-hub">JavaScript</a></li><li>Python (basic)</li><li><a class="chip" href="#order-check" data-targets="order-check">SQLite</a></li><li><a class="chip" href="#order-check" data-targets="order-check">Whisper</a></li><li><a class="chip" href="#command-hub" data-targets="command-hub">Claude API</a></li></ul></dd></div>
+        <div class="skill" data-r data-targets="xp-syzygy xp-cgcs"><dt>Process improvement</dt><dd>Map how work really flows, find the waste, and turn findings into process changes and software fixes. Client workflows at Syzygy.<span class="skill__seen">Seen in <a href="#xp-syzygy">Syzygy Services</a>, <a href="#xp-cgcs">CGCS internship</a></span></dd></div>
+        <div class="skill" data-r data-targets="forecast"><dt>Forecasting and modeling</dt><dd>Built a multivariable demand model that cut waste by over 50%.<span class="skill__seen">Seen in <a href="#forecast">Demand forecast</a></span></dd></div>
+        <div class="skill" data-r data-targets="xp-cgcs command-hub"><dt>Financial analysis</dt><dd>Audited an annual budget, found untracked expenses and revenue, and designed the new ledger system.<span class="skill__seen">Seen in <a href="#xp-cgcs">CGCS internship</a>, <a href="#command-hub">Command Hub</a></span></dd></div>
+        <div class="skill" data-r data-targets="command-hub xp-cgcs"><dt>Data and dashboards</dt><dd>Excel (financial modeling, pivot tables, reconciliation), and an analytics dashboard used by a team of eight.<span class="skill__seen">Seen in <a href="#command-hub">Command Hub</a>, <a href="#xp-cgcs">CGCS internship</a></span></dd></div>
+        <div class="skill" data-r data-targets="order-check command-hub xp-syzygy"><dt>Applied AI</dt><dd>Speech recognition with Whisper, the Claude API, and evaluation on held-out test sets.<span class="skill__seen">Seen in <a href="#order-check">Order Check</a>, <a href="#command-hub">Command Hub</a>, <a href="#xp-syzygy">Syzygy Services</a></span></dd></div>
+        <div class="skill" data-r data-targets="xp-syzygy xp-cgcs xp-service"><dt>Working with people</dt><dd>Interviewing staff, co-writing a business plan with a vice chancellor, training new hires.<span class="skill__seen">Seen in <a href="#xp-syzygy">Syzygy Services</a>, <a href="#xp-cgcs">CGCS internship</a>, <a href="#xp-service">Service roles</a></span></dd></div>
       </dl>
     </div>
   </section>
@@ -132,8 +137,10 @@
   <section class="xp wrap" id="experience">
     <h2 class="heading" data-r>Experience</h2>
     <ol class="xp__rows">
-      <li class="xp__row" data-r>
+      <li class="xp__track" aria-hidden="true"><span class="xp__fill"></span></li>
+      <li class="xp__row" id="xp-syzygy" data-r>
         <div class="xp__head">
+          <span class="xp__logo"><img src="assets/logos/syzygy.png" width="288" height="70" alt="Syzygy Services logo" loading="lazy" decoding="async"></span>
           <h3>AI Analyst</h3>
           <p>Syzygy Services</p>
           <p class="meta">Oct 2026 – Present · Grand Rapids, MI</p>
@@ -144,8 +151,9 @@
           <li>Diagnose and resolve bugs in the client's internal quoting platform as part of a broader software revamp.</li>
         </ul>
       </li>
-      <li class="xp__row" data-r>
+      <li class="xp__row" id="xp-cgcs" data-r>
         <div class="xp__head">
+          <span class="xp__logo"><img src="assets/logos/cgcs.png" width="640" height="285" alt="Center for Government and Civic Service logo" loading="lazy" decoding="async"></span>
           <h3>Operations Intern and Strategic Planner</h3>
           <p>The Center for Government and Civic Service</p>
           <p class="meta">Feb 2026 – Aug 2026 · Austin, TX</p>
@@ -157,8 +165,21 @@
           <li>Designed and deployed a data analytics dashboard for an 8-person team.</li>
         </ul>
       </li>
-      <li class="xp__row" data-r>
+      <li class="xp__row" id="xp-service" data-r>
         <div class="xp__head">
+          <span class="xp__logo"><img src="assets/logos/chick-fil-a.png" width="627" height="320" alt="Chick-fil-A logo" loading="lazy" decoding="async"></span>
+          <h3>Service roles</h3>
+          <p>Chick-fil-A and Kerbey Lane Cafe</p>
+          <p class="meta">Jan 2024 – Jul 2026 · Austin, TX</p>
+        </div>
+        <ul>
+          <li>Built the demand-forecasting model above, and coordinated inventory and staffing at a franchise's highest-grossing location.</li>
+          <li>Trained and onboarded new hires on point-of-sale workflows and service standards.</li>
+        </ul>
+      </li>
+      <li class="xp__row" id="xp-fellow" data-r>
+        <div class="xp__head">
+          <span class="xp__logo"><img src="assets/logos/texas.png" width="322" height="192" alt="University of Texas at Austin logo" loading="lazy" decoding="async"></span>
           <h3>Selected Fellow</h3>
           <p>UT and ACC Youth and Community Studies Fellowship</p>
           <p class="meta">Dec 2024 – May 2025 · Austin, TX</p>
@@ -167,8 +188,9 @@
           <li>Completed a program on community building and civic leadership through UT's College of Education.</li>
         </ul>
       </li>
-      <li class="xp__row" data-r>
+      <li class="xp__row" id="xp-motio" data-r>
         <div class="xp__head">
+          <span class="xp__logo"><img src="assets/logos/motio.png" width="640" height="225" alt="MOTIO Business Technology logo" loading="lazy" decoding="async"></span>
           <h3>Intern</h3>
           <p>MOTIO Business Technology</p>
           <p class="meta">Dec 2023 – Jan 2024 · Grand Haven, MI</p>
@@ -176,17 +198,6 @@
         <ul>
           <li>Assisted in deploying IT systems for a client's new operating locations.</li>
           <li>Analyzed the role of IT systems in an automotive manufacturing environment.</li>
-        </ul>
-      </li>
-      <li class="xp__row" data-r>
-        <div class="xp__head">
-          <h3>Service roles</h3>
-          <p>Chick-fil-A and Kerbey Lane Cafe</p>
-          <p class="meta">Jan 2024 – Jul 2026 · Austin, TX</p>
-        </div>
-        <ul>
-          <li>Built the demand-forecasting model above, and coordinated inventory and staffing at a franchise's highest-grossing location.</li>
-          <li>Trained and onboarded new hires on point-of-sale workflows and service standards.</li>
         </ul>
       </li>
     </ol>
@@ -201,15 +212,15 @@
           <p data-r>The plan changed in a community-college math class. I liked calculus and physics far more than I expected, and my roommate, a mechanical engineering senior at UT, told me to look at engineering because he thought it fit how curious I am. He was right. I got into Michigan Engineering and came back home, this time to Ann Arbor.</p>
           <p data-r>I picked Industrial and Operations Engineering because of an internship at Austin Community College's Center for Government and Civic Service. I audited the center's budget, helped plan its next year, and found out I love figuring out how a place actually runs. My favourite part is where people and systems meet: talking to the team, finding what's slowing them down, and fixing it. That's pretty much my job now as an AI Analyst at Syzygy.</p>
           <p data-r>AI has been a side obsession since high school, when I started listening to Lex Fridman and his guests argue about what thinking even is. That was before ChatGPT, so I had a head start on using these tools, and I haven't stopped since.</p>
-          <p data-r>When I'm not working, I'm usually running, reading Kurt Vonnegut, or playing poker with friends. I like poker because it's half math and half reading people. An Ironman is somewhere on the list, and in summer you'll probably find me back on the beach in Grand Haven.</p>
+          <p data-r>When I'm not working, I'm usually running, reading Kurt Vonnegut, or playing <span class="poker-word" data-poker>poker</span> with friends. I like poker because it's half math and half reading people. An Ironman is somewhere on the list, and in summer you'll probably find me back on the beach in Grand Haven.</p>
         </div>
         <dl class="school">
           <div data-r>
-            <dt>University of Michigan</dt>
+            <dt><span class="school__logo"><img src="assets/logos/michigan.png" width="417" height="315" alt="University of Michigan logo" loading="lazy" decoding="async"></span>University of Michigan</dt>
             <dd>B.S.E. Industrial and Operations Engineering<br><span class="meta">Ann Arbor, MI · Sep 2026 – Dec 2028 (expected)</span></dd>
           </div>
           <div data-r>
-            <dt>Austin Community College</dt>
+            <dt><span class="school__logo"><img src="assets/logos/acc.png" width="151" height="172" alt="Austin Community College logo" loading="lazy" decoding="async"></span>Austin Community College</dt>
             <dd>Honors General Studies, mathematics and engineering focus · GPA 3.82<br><span class="meta">Austin, TX · Jan 2024 – Jul 2026 · Chancellor's Honors Award, Scholastic Excellence, Phi Theta Kappa</span></dd>
           </div>
         </dl>
@@ -238,5 +249,6 @@
 </footer>
 
 <script src="js/site.js" defer></script>
+<script src="js/block-m.js" defer></script>
 </body>
 </html>
