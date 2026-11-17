@@ -80,7 +80,8 @@ p { max-width: 64ch; text-wrap: pretty; }
 
 /* ---------- hero ---------- */
 .hero { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-areas: "name" "text" "results"; column-gap: var(--gutter); row-gap: clamp(1.5rem, 3vw, 2.5rem); padding-top: clamp(1.5rem, 4vw, 3.5rem); padding-bottom: var(--section); }
-.hero__name { grid-area: name; font-size: var(--step-display); letter-spacing: -0.045em; line-height: 0.95; margin-left: -0.04em; }
+.hero__title { grid-area: name; display: flex; align-items: center; gap: clamp(0.5rem, 2vw, 1.75rem); }
+.hero__name { font-size: var(--step-display); letter-spacing: -0.045em; line-height: 0.95; margin-left: -0.04em; }
 .hero__text { grid-area: text; }
 .hero__role { font-size: var(--step-lead); line-height: 1.3; letter-spacing: -0.01em; max-width: 34ch; }
 .hero__statement { margin-top: 1rem; color: var(--muted); max-width: 60ch; }
@@ -207,7 +208,8 @@ div.project__shot:hover { background: var(--surface); }
 
 /* section headings are quiet labels; project and role titles carry the weight */
 .approach__steps h3 { font-size: var(--step-head); letter-spacing: -0.02em; line-height: 1.1; }
-.approach__steps { margin-top: 1.5rem; }
+.approach__steps { margin-top: clamp(2.5rem, 5vw, 4rem); }
+.approach { padding-top: clamp(2.5rem, 4.5vw, 4rem); }
 
 
 .skills__tools { grid-column: 1 / -1; }
@@ -233,6 +235,39 @@ div.project__shot:hover { background: var(--surface); }
 @media (pointer: coarse) { .rush__line kbd, .rush__keys { display: none; } }
 .rush__line.is-empty { visibility: hidden; }
 
+/* ---------- paper grain: a faint, still noise over the whole page ---------- */
+body::before { content: ""; position: fixed; inset: 0; z-index: 30; pointer-events: none; opacity: 0.07; mix-blend-mode: multiply; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+/* ---------- skills point to the work behind them ---------- */
+.skill__seen { display: block; margin-top: 0.4rem; font-size: 0.8125rem; color: var(--muted); }
+.skill__seen a { color: var(--ink); text-decoration: underline; text-decoration-color: #c4c4bf; text-underline-offset: 0.2em; transition: color 160ms, text-decoration-color 160ms; }
+.skill__seen a:hover { color: var(--accent); text-decoration-color: currentColor; }
+.skill { position: relative; padding: 0.75rem 0.9rem; margin: -0.75rem -0.9rem; border-radius: var(--radius); transition: background-color 200ms; }
+.skill.is-active { background: var(--bg); }
+.skill.is-active dt { color: var(--accent); }
+.chip { display: inline-block; color: inherit; text-decoration: none; box-shadow: inset 0 -1px 0 #c4c4bf; transition: color 160ms, box-shadow 160ms; }
+.chip:hover, .chip:focus-visible { color: var(--accent); box-shadow: inset 0 -1px 0 currentColor; }
+.project, .xp__row { transition: box-shadow 240ms, background-color 240ms; border-radius: var(--radius); }
+.is-match { box-shadow: 0 0 0 2px var(--accent); }
+.project:target, .xp__row:target { animation: found 1.8s var(--ease-out) 1; }
+@keyframes found { 0%, 35% { box-shadow: 0 0 0 2px var(--accent); background-color: #e9ecf5; } 100% { box-shadow: 0 0 0 2px transparent; background-color: transparent; } }
+.project--plain:target { animation-name: found-plain; }
+@keyframes found-plain { 0%, 35% { box-shadow: 0 0 0 2px var(--accent); } 100% { box-shadow: 0 0 0 2px transparent; } }
+
+/* ---------- experience: a timeline that fills as you read ---------- */
+.xp__rows { position: relative; padding-left: 2rem; }
+.xp__track { position: absolute; left: 0.4rem; top: 2.2rem; bottom: 2.2rem; width: 2px; background: var(--surface); padding: 0; }
+.xp__track::before { display: none; }
+.xp__fill { position: absolute; inset: 0; background: var(--accent); transform-origin: 50% 0; transform: scaleY(var(--fill, 1)); }
+.xp__row { position: relative; }
+.xp__row > .xp__head::before { content: ""; position: absolute; left: calc(-2rem + 0.4rem - 4px); top: clamp(1.5rem, 3vw, 2.5rem); margin-top: 0.45em; width: 10px; height: 10px; border-radius: 50%; background: var(--bg); box-shadow: inset 0 0 0 2px #c9c9c4; transition: background-color 300ms, box-shadow 300ms; }
+.xp__row.is-reached > .xp__head::before { background: var(--accent); box-shadow: inset 0 0 0 2px var(--accent); }
+
+/* ---------- the poker word ---------- */
+.poker-link, .poker-word { font: inherit; color: #2563eb; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.2em; cursor: pointer; transition: color 160ms; }
+.poker-link:hover, .poker-link:focus-visible { color: var(--accent); }
+
+
 /* ---------- small screens ---------- */
 @media (max-width: 60rem) {
   /* the name row scrolls away; only the 44px link row stays pinned */
@@ -248,6 +283,9 @@ div.project__shot:hover { background: var(--surface); }
 
   .hero__results { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
   .hero__results li { grid-template-columns: 7rem minmax(0, 1fr); align-items: baseline; }
+  .xp__rows { padding-left: 1.5rem; }
+  .xp__track { left: 0.2rem; }
+  .xp__row > .xp__head::before { left: calc(-1.5rem + 0.2rem - 4px); }
 
   .split, .project, .project--plain, .xp__row { grid-template-columns: minmax(0, 1fr); }
   .project--flip .project__shot { order: 0; }
@@ -265,3 +303,33 @@ div.project__shot:hover { background: var(--surface); }
 
 @media (max-width: 60rem) and (orientation: portrait) { .rush__play { grid-template-columns: 1fr; } }
 @media (max-height: 34rem) { .rush__in { gap: 0.5rem; } .rush__said { font-size: 1.125rem; min-height: 0; } .rush__line { min-height: 2.75rem; font-size: 1rem; } }
+
+/* ---------- logos beside experience and education ---------- */
+.xp__head { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); column-gap: 1.1rem; align-content: start; }
+.xp__head > :not(.xp__logo) { grid-column: 2; }
+.xp__logo { grid-column: 1; grid-row: 1 / span 3; align-self: start; width: 5.5rem; height: 3.5rem; display: grid; place-items: center; padding: 0.5rem 0.6rem; background: #fff; border-radius: var(--radius); box-shadow: inset 0 0 0 1px #e4e4e0; }
+.xp__logo img { width: 100%; height: 100%; object-fit: contain; }
+.xp__head > p:first-of-type { margin-top: 0.2rem; }
+.school dt { display: flex; align-items: center; gap: 0.75rem; min-height: 2.75rem; }
+.school__logo { flex: none; width: 2.75rem; height: 2.75rem; display: grid; place-items: center; padding: 0.3rem; background: #fff; border-radius: var(--radius); box-shadow: inset 0 0 0 1px #e4e4e0; }
+.school__logo img { width: 100%; height: 100%; object-fit: contain; }
+@media (max-width: 40rem) {
+  .xp__head { grid-template-columns: 4.25rem minmax(0, 1fr); column-gap: 0.9rem; }
+  .xp__logo { width: 4.25rem; height: 2.75rem; padding: 0.35rem 0.45rem; }
+}
+
+/* ---------- the 3D Block M: desktop only, placed by hand with the ?place tool on 2026-11-17 ----------
+   Saved at a 1651px-wide screen: 413px across, 12px above the top of the hero, 28px in from its right edge.
+   On narrower desktops it shrinks to the room the one-line name leaves. Hidden below 60rem. */
+.block-m { display: none; }
+@media (min-width: 60.0625rem) {
+  .hero { position: relative; --m-w: clamp(14rem, calc(min(100vw, 90rem) - 2 * var(--margin) - var(--step-display) * 6.15 - var(--gutter) + 2.25rem), 25.8rem); }
+  /* keep the intro clear of the M: it reaches 1.75rem in from the hero's outer edge */
+  .hero__text { max-width: calc(100% - var(--m-w) + var(--margin) - 1.75rem - 1.5rem); }
+  .block-m { display: block; position: absolute; top: -0.75rem; right: 1.75rem; width: var(--m-w); aspect-ratio: 1; z-index: 1; touch-action: pan-y; cursor: grab; -webkit-tap-highlight-color: transparent; }
+  .block-m.is-grabbing { cursor: grabbing; }
+  .block-m__fallback { position: absolute; inset: 22% 14%; width: 72%; height: auto; }
+  .block-m.is-live .block-m__fallback { display: none; }
+  .block-m__canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; outline: none; border-radius: 50%; }
+  .block-m__canvas:focus-visible { box-shadow: 0 0 0 2px var(--accent); }
+}
