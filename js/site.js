@@ -66,6 +66,25 @@
     } catch (err) {}
   }
 
-  function init() { setupSpy(); setupCopy(); setupRush(); }
+  /* ---------- project videos play while on screen ---------- */
+  // Without JS, or with reduced motion, the video keeps its poster and native controls.
+  function setupLiveVideos() {
+    var vids = $$('video[data-live]');
+    var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var saveData = navigator.connection && navigator.connection.saveData;
+    if (!vids.length || still || saveData || !('IntersectionObserver' in window)) return;
+    vids.forEach(function (v) { v.removeAttribute('controls'); v.preload = 'metadata'; });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        var v = en.target;
+        if (en.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () { v.setAttribute('controls', ''); }); }
+        else v.pause();
+      });
+    }, { threshold: 0.4 });
+    vids.forEach(function (v) { io.observe(v); });
+    document.addEventListener('visibilitychange', function () { if (document.hidden) vids.forEach(function (v) { v.pause(); }); });
+  }
+
+  function init() { setupSpy(); setupCopy(); setupRush(); setupLiveVideos(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
