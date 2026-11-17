@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>CGCS Command Hub · Brenden Fogg</title>
+
+  <!-- meta -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CGCS Command Hub: an operations dashboard that puts a civic center's email, calendar, team, and SOP in one browser tab.">
+
+  <!-- Font Awesome (icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../../_css/style.css?v=5">
+  <style>
+    /* Case-study additions; everything else comes from the site stylesheet. */
+    .lede { font-size: 19px; line-height: 1.5; color: var(--subtle); padding-top: 4px !important; }
+    .meta { color: var(--muted); font-size: 13px; }
+    .meta a { white-space: nowrap; }
+    figure { margin: 18px 0 6px; }
+    figcaption { color: var(--muted); font-size: 13px; padding-top: 10px; }
+    ul.tight { margin: 4px 0; padding-left: 20px; }
+    ul.tight li { padding: 3px 0; }
+    .back { font-size: 14px; }
+    /* tighter section spacing than the home page's spacer */
+    .main > .br { height: 64px; }
+    .main .anchor > p:last-child { padding-bottom: 0; }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="container">
+
+    <!-- left pane -->
+    <nav class="left-pane toc" aria-label="Site">
+      <p class="name about"><a href="../../">Brenden<br>Fogg<br></a></p>
+      <div class="mobile-header">
+        <span class="about"><a href="../../">Brenden Fogg</a></span>
+      </div>
+      <button class="mobile-toggle" type="button" aria-label="Menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="links">
+        <div class="visible-sm small-br"></div>
+        <a href="#demo" class="nav demo">Demo</a>
+        <div class="small-br"></div>
+        <a href="#features" class="nav features">What it does</a>
+        <div class="small-br"></div>
+        <a href="#built" class="nav built">How it's built</a>
+        <div class="small-br"></div>
+        <a href="#budget" class="nav budget">Budget audit</a>
+        <div class="small-br"></div>
+        <a class="back" href="../../#projects">&larr; All projects</a>
+      </div>
+    </nav>
+
+    <!-- right pane -->
+    <main class="right-pane main" id="main">
+
+      <div class="anchor" id="top">
+        <h1 class="project-title">CGCS Command Hub</h1>
+        <p class="lede">
+          One browser tab for running a college civic center. The Command Hub puts the director's
+          email, calendar, team, objectives, and the center's standard operating procedures on a
+          single dashboard, with an AI assistant that answers from the SOP first.
+        </p>
+        <div class="meta">
+          Center for Government and Civic Service, Austin Community College · 2026 ·
+          JavaScript, Tailwind, Cloudflare Pages, Google Calendar and Gmail APIs, Claude API
+        </div>
+      </div>
+
+      <div class="br"></div>
+
+      <!-- demo -->
+      <div class="anchor" id="demo">
+        <h2 class="section">Demo</h2>
+        <figure>
+          <video src="../../_media/cgcs-hub-demo.mp4?v=4" poster="../../_images/cgcs-hub-video-poster.jpg?v=4"
+                 width="1280" height="720" controls playsinline muted preload="metadata"
+                 aria-label="Walkthrough of the CGCS Command Hub"></video>
+          <figcaption>One-minute silent walkthrough of the main features. Names and records are fictional stand-ins.</figcaption>
+        </figure>
+      </div>
+
+      <div class="br"></div>
+
+      <!-- features -->
+      <div class="anchor" id="features">
+        <h2 class="section">What it does</h2>
+        <ul class="tight">
+          <li><span class="bold">Dashboard.</span> The day's schedule, recent email, open objectives, and weekly reports on one screen.</li>
+          <li><span class="bold">Inbox and triage.</span> Live Gmail with important mail first, plus a triage view that flags open loops: threads waiting on a reply for more than 72 hours, or from leadership.</li>
+          <li><span class="bold">AI assistant.</span> Answers in two parts: what the center's SOP says, with the section cited, then broader advice. It can also look up email, the calendar, objectives, and people.</li>
+          <li><span class="bold">Team.</span> Objectives, student employees, and task assignment with a workload view for each person.</li>
+          <li><span class="bold">Weekly reports.</span> Student employees' weekly activity reports, organized by AI into themes, problems, and follow-ups.</li>
+          <li><span class="bold">People and network.</span> A directory of contacts tagged by what they can help with, searchable by need.</li>
+          <li><span class="bold">Role-based views.</span> Separate views for the director, the deputy, and student employees, for a team of eight.</li>
+        </ul>
+      </div>
+
+      <div class="br"></div>
+
+      <!-- built -->
+      <div class="anchor" id="built">
+        <h2 class="section">How it's built</h2>
+        <ul class="tight">
+          <li>A single-page app in plain JavaScript and Tailwind, hosted on Cloudflare Pages.</li>
+          <li>Cloudflare Pages Functions keep Google sign-in alive between visits, so the director signs in once instead of every time.</li>
+          <li>AI requests go through the server, so no API key lives in the browser.</li>
+          <li>Google Calendar and Gmail connect through Google sign-in (OAuth).</li>
+        </ul>
+      </div>
+
+      <div class="br"></div>
+
+      <!-- budget -->
+      <div class="anchor" id="budget">
+        <h2 class="section">Budget audit</h2>
+        <p>
+          Alongside the dashboard, I led a financial audit of the center's annual budget. It surfaced
+          untracked expenses and revenue, and I designed a new budget and ledger system to close the gaps.
+        </p>
+        <div class="small-br"></div>
+        <div class="meta">Built during my internship at the Center for Government and Civic Service.</div>
+      </div>
+
+      <div class="abyss"></div>
+    </main>
+
+  </div>
+
+  <script src="../../_js/main.js?v=4"></script>
+</body>
+</html>

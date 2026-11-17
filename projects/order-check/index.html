@@ -12,27 +12,28 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="../../_css/style.css">
+  <link rel="stylesheet" href="../../_css/style.css?v=5">
   <style>
     /* Case-study additions; everything else comes from the site stylesheet. */
-    .lede { font-size: 17px; line-height: 1.5; padding-top: 4px !important; }
-    .meta { color: #777777; font-size: 13px; }
+    .lede { font-size: 19px; line-height: 1.5; color: var(--subtle); padding-top: 4px !important; }
+    .meta { color: var(--muted); font-size: 13px; }
+    .meta a { white-space: nowrap; }
     .callout {
       font-family: 'DM Mono', 'Courier New', Courier, monospace;
       font-size: 13px;
-      border-left: 3px solid #c4002b;
+      border: 1px solid #efc7cf;
       background: #fdf3f4;
-      padding: 8px 12px;
+      padding: 12px 16px;
+      border-radius: 10px;
       margin: 12px 0;
     }
     figure { margin: 18px 0 6px; }
-    figure img { width: 100%; border: 1px solid #333333; display: block; }
-    figcaption { color: #777777; font-size: 13px; padding-top: 6px; }
+    figcaption { color: var(--muted); font-size: 13px; padding-top: 6px; }
     .diagram { width: 100%; height: auto; display: block; margin: 14px 0 4px; }
     .diagram text { font-family: 'DM Mono', 'Courier New', Courier, monospace; font-size: 12px; fill: #333333; }
     .diagram .box { fill: #ffffff; stroke: #333333; stroke-width: 1; }
     .diagram .accent { stroke: #c4002b; }
-    .diagram .muted { fill: #777777; font-size: 11px; }
+    .diagram .muted { fill: #666666; font-size: 11px; }
     .diagram line, .diagram path { stroke: #333333; stroke-width: 1; fill: none; }
     table.results { border-collapse: collapse; width: 100%; font-size: 14px; margin: 10px 0 4px; }
     table.results th { text-align: left; font-weight: 500; border-bottom: 1px solid #333333; padding: 6px 8px 6px 0; }
@@ -43,7 +44,7 @@
     ul.tight li { padding: 3px 0; }
     .back { font-size: 14px; }
     /* tighter section spacing than the home page's 80px spacer */
-    .main > .br { height: 40px; }
+    .main > .br { height: 64px; }
     .main .anchor > p:last-child { padding-bottom: 0; }
     figure + figure { margin-top: 26px; }
     @media (max-width: 629px) {
@@ -53,44 +54,47 @@
 </head>
 
 <body>
+  <a class="skip" href="#main">Skip to content</a>
   <div class="container">
 
     <!-- left pane -->
-    <div class="left-pane toc">
-      <h1 class="name about"><a href="../../" style="color:inherit;text-decoration:none">Brenden<br>Fogg<br></a></h1>
+    <nav class="left-pane toc" aria-label="Site">
+      <p class="name about"><a href="../../">Brenden<br>Fogg<br></a></p>
       <div class="mobile-header">
-        <span class="about"><a href="../../" style="color:inherit;text-decoration:none">Brenden Fogg</a></span>
+        <span class="about"><a href="../../">Brenden Fogg</a></span>
       </div>
-      <div class="mobile-toggle">
+      <button class="mobile-toggle" type="button" aria-label="Menu" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
-      </div>
+      </button>
       <div class="links">
         <div class="visible-sm small-br"></div>
-        <div href="#problem" class="nav problem">Problem</div>
+        <a href="#problem" class="nav problem">Problem</a>
         <div class="small-br"></div>
-        <div href="#how" class="nav how">How it works</div>
+        <a href="#market" class="nav market">Market</a>
         <div class="small-br"></div>
-        <div href="#demo" class="nav demo">Demo</div>
+        <a href="#how" class="nav how">How it works</a>
         <div class="small-br"></div>
-        <div href="#results" class="nav results">Results</div>
+        <a href="#demo" class="nav demo">Demo</a>
         <div class="small-br"></div>
-        <div href="#privacy" class="nav privacy">Privacy</div>
+        <a href="#results" class="nav results">Results</a>
         <div class="small-br"></div>
-        <div href="#next" class="nav next">Next</div>
+        <a href="#privacy" class="nav privacy">Privacy</a>
+        <div class="small-br"></div>
+        <a href="#next" class="nav next">Next</a>
         <div class="small-br"></div>
         <a href="https://github.com/Brendenfogg/order-check">Code</a>
         <div class="small-br"></div>
         <a class="back" href="../../#projects">&larr; All projects</a>
       </div>
-    </div>
+    </nav>
 
     <!-- right pane -->
-    <div class="right-pane main">
+    <main class="right-pane main" id="main">
 
       <div class="anchor" id="top">
-        <h2 class="section">Order Check</h2>
+        <h1 class="project-title">Order Check</h1>
         <p class="lede">
           A second set of ears for the person taking your order. Order Check is an AI-powered
           microphone that listens while an employee takes an order, compares what the guest <i>said</i> with what was <i>rung in</i>,
@@ -102,8 +106,7 @@
         </div>
         <div class="meta">
           Personal project, 2026 · Rust, Whisper (on-device speech recognition), SQLite, HTML/JS ·
-          <a href="https://github.com/Brendenfogg/order-check">Code on GitHub</a>
-          <span class="icon"><a class="fa fa-github" aria-hidden="true" href="https://github.com/Brendenfogg/order-check"></a></span>
+          <a href="https://github.com/Brendenfogg/order-check"><i class="fa fa-github" aria-hidden="true"></i>&nbsp;Code on GitHub</a>
         </div>
       </div>
 
@@ -130,6 +133,35 @@
       <div class="br"></div>
 
       <!-- how it works -->
+      <!-- market -->
+      <div class="anchor" id="market">
+        <h2 class="section">Market</h2>
+        <p>
+          About <span class="bold">1 in 8 drive-thru orders is wrong</span>, even at the best chains.
+          Intouch Insight's 2025 study measured Chick-fil-A at 87% accurate. Inaccurate orders cost an
+          estimated <span class="bold">$50K&ndash;$95K per store per year</span>, and most of that is
+          guests who don't come back, not the remake.
+        </p>
+        <p>
+          The industry's answer so far has been to replace the order-taker, and it hasn't gone well.
+          McDonald's ended its IBM voice test in 2024. In 2025, AI-taken orders were 83% accurate,
+          compared with 87% for people, and <span class="bold">95% when a person backed up the AI</span>.
+          The SEC charged one vendor, Presto, for saying its AI took orders that off-site humans were
+          actually handling. Order Check is the person-plus-AI version with the person in charge.
+          It also complements camera systems like Agot AI: they check the food going into the bag,
+          and Order Check checks the ticket before the kitchen sees it.
+        </p>
+        <p>
+          A simple cost model puts the value at <span class="bold">about $5K&ndash;$30K per store per year</span>.
+          The number that decides it is one nobody publishes: what share of errors start at the register
+          and not in the kitchen. That's the first question in my operator interviews. The full market,
+          competitor, cost, and recording-consent analysis is in the
+          <a href="https://github.com/Brendenfogg/order-check/blob/feat/order-check-v1/docs/business-case.md">business case</a>.
+        </p>
+      </div>
+
+      <div class="br"></div>
+
       <div class="anchor" id="how">
         <h2 class="section">How it works</h2>
         <svg class="diagram" viewBox="0 0 700 290" role="img" aria-label="An AI-powered microphone streams audio to an in-restaurant server, which transcribes it, reads the spoken order, and checks it against the POS ticket before the kitchen gets it. On a mismatch, the server buzzes the microphone.">
@@ -197,8 +229,8 @@
         <h2 class="section">Demo</h2>
 
         <figure>
-          <video src="../../_media/order-check-demo.mp4" poster="../../_images/order-check-video-poster.jpg"
-                 controls playsinline preload="none" style="width:100%;border:1px solid #333333;display:block"></video>
+          <video aria-label="Order Check demo walkthrough" src="../../_media/order-check-demo.mp4" poster="../../_images/order-check-video-poster.jpg"
+                 width="1920" height="1080" controls playsinline preload="none"></video>
           <figcaption>Walkthrough: the problem, how it works, a live catch, and the manager dashboard (demo data), shown with a generic burger-and-chicken menu. Swap in any restaurant's menu file.</figcaption>
         </figure>
 
@@ -279,10 +311,10 @@
       </div>
 
       <div class="abyss"></div>
-    </div>
+    </main>
 
   </div>
 
-  <script src="../../_js/main.js"></script>
+  <script src="../../_js/main.js?v=4"></script>
 </body>
 </html>

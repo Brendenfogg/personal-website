@@ -4,7 +4,21 @@
    ============================================================ */
 
 /* ---- Fonts ---- */
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap');
+
+
+/* ---- Tokens ---- */
+:root {
+  --ink: #333333;
+  --ink-strong: #1a1a1a;
+  --subtle: #555555;
+  --muted: #666666;
+  --rule: #d9d9d9;
+  --accent: #3d8bbd;
+  --radius: 14px;
+  --media-edge: rgba(0, 0, 0, 0.08);
+  --media-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 14px 36px -12px rgba(0, 0, 0, 0.18);
+}
 
 
 /* ---- Reset / Base ---- */
@@ -15,12 +29,45 @@ html {
 }
 
 body {
-  font-size: 15px;
+  font-size: 16px;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   background: #ffffff;
-  color: #333333;
+  color: var(--ink);
   margin: 0;
   padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(61, 139, 189, 0.2);
+  color: var(--ink-strong);
+}
+
+/* ---- Skip link: hidden until focused from the keyboard ---- */
+.skip {
+  position: absolute;
+  left: 16px;
+  top: -100px;
+  z-index: 1000;
+  padding: 8px 12px;
+  background: #ffffff;
+  border-radius: 8px;
+}
+
+.skip:focus {
+  top: 12px;
+  box-shadow: var(--media-shadow);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+p,
+li {
+  text-wrap: pretty;
 }
 
 h1 {
@@ -38,13 +85,23 @@ h2 {
 
 a,
 a:active {
-  color: #333333;
+  color: var(--ink);
   text-decoration: none;
+  transition: color .2s ease, text-decoration-color .2s ease;
 }
 
 a.bold,
-a .bold {
+a .bold,
+a.inline {
   text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(51, 51, 51, 0.35);
+}
+
+a:hover .bold,
+a.inline:hover {
+  text-decoration-color: currentColor;
 }
 
 a,
@@ -60,7 +117,12 @@ a:hover span,
 .about:hover,
 .nav:hover,
 .nav.active {
-  color: #6ab0d8;
+  color: var(--accent);
+}
+
+/* The current section reads as selected, not merely hovered */
+.nav.active {
+  font-weight: 500;
 }
 
 br {
@@ -87,7 +149,7 @@ br {
 
 /* ---- Layout ---- */
 .container {
-  color: #333333;
+  color: var(--ink);
   line-height: 1.55;
   margin: 10% auto;
   overflow: visible;
@@ -100,16 +162,69 @@ br {
 }
 
 .main {
-  margin-bottom: 140px;
+  margin-bottom: 40px;
 }
 
-/* ---- Profile image / pixel-hero ---- */
-#about img {
-  float: left;
-  height: 140px;
-  margin: 8px 20px 10px 0;
-  padding: 0;
-  border: 1px solid #333333;
+/* ---- About: photo stands alone above the intro ---- */
+#about .portrait {
+  display: block;
+  width: 128px;
+  height: auto;
+  aspect-ratio: 1545 / 2000; /* the photo's own proportions, so it can never stretch */
+  object-fit: cover;
+  margin: 0 0 28px;
+  border-radius: var(--radius);
+  box-shadow: var(--media-shadow);
+}
+
+.hello {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.022em;
+  color: var(--ink-strong);
+  margin: 0 0 6px;
+  text-wrap: balance;
+}
+
+/* Case-study pages open with the same large title as the home page */
+.project-title {
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.022em;
+  color: var(--ink-strong);
+  margin: 0 0 12px;
+  text-wrap: balance;
+}
+
+.main div p.intro {
+  font-size: 19px;
+  line-height: 1.5;
+  color: var(--subtle);
+  padding: 6px 0 0;
+}
+
+/* ---- Media: rounded, soft-edged frames for screenshots and video ---- */
+.media,
+figure img,
+figure video {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--media-edge);
+  box-shadow: var(--media-shadow);
+}
+
+figure video {
+  aspect-ratio: 16 / 9;
+  background: #0f1115;
+}
+
+figure figcaption {
+  padding-top: 12px;
 }
 
 #photo-hero {
@@ -137,11 +252,19 @@ br {
   padding: 10px 0;
 }
 
+.main p,
+.main li {
+  line-height: 1.6;
+}
+
 /* ---- Section headers ---- */
 .section {
+  font-size: 13px;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 4px;
-  margin-bottom: 4px;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+  margin-bottom: 8px;
 }
 
 /* ---- Scroll target offset so headings don't hide under the fixed sidebar ---- */
@@ -151,7 +274,7 @@ br {
 
 /* ---- Spacers ---- */
 .br {
-  height: 80px;
+  height: 88px;
 }
 
 .small-br {
@@ -165,7 +288,7 @@ br {
 }
 
 .fa {
-  color: #333333;
+  color: inherit;
 }
 
 /* ---- Project/paper entries ---- */
@@ -184,7 +307,8 @@ br {
   letter-spacing: 0.5px;
   border: 1px solid #aaaaaa;
   color: #777777;
-  padding: 1px 6px;
+  padding: 1px 8px;
+  border-radius: 999px;
   margin-left: 4px;
   vertical-align: middle;
   line-height: 1.6;
@@ -192,7 +316,16 @@ br {
 
 /* ---- Abyss (scroll padding at bottom) ---- */
 .abyss {
-  height: 190px;
+  height: 120px;
+}
+
+/* ---- Mobile menu button ---- */
+.mobile-toggle {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: inherit;
 }
 
 
@@ -296,17 +429,34 @@ br {
 
   .right-pane {
     width: 100%;
-    margin: 60px 0 80px;
+    margin: 84px 0 80px;
   }
 
   .right-pane > div {
-    width: 94%;
-    margin: 10px 18px 0 auto;
+    margin: 10px 20px 0;
+  }
+
+  /* Clear the 53px fixed header when jumping to a section */
+  .anchor {
+    scroll-margin-top: 76px;
+  }
+
+  .main p,
+  .main li {
+    line-height: 1.55;
+  }
+
+  .br {
+    height: 44px;
   }
 
   .name,
   .links .slash {
     display: none;
+  }
+
+  .hello {
+    font-size: 27px;
   }
 
   .mobile-header {
@@ -326,8 +476,8 @@ br {
     width: 100%;
     max-height: 12px;
     padding-bottom: 40px;
-    border-bottom: 1px solid #c7c7c7;
-    background-color: rgba(255, 255, 255, 0.95);
+    border-bottom: 1px solid var(--rule);
+    background-color: #ffffff;
     z-index: 999;
     -webkit-transition: all 0.3s;
   }
@@ -336,11 +486,26 @@ br {
     text-align: center;
     width: 100%;
     float: right;
-    padding-top: 20px;
+    padding-top: 12px;
+  }
+
+  /* 44px-tall tap targets; the gaps come from padding instead of spacer divs */
+  .links a {
+    display: block;
+    padding: 10px 0;
+  }
+
+  .links .small-br {
+    display: none;
+  }
+
+  /* Links in the closed menu can't be tabbed to */
+  .toc:not(.open-nav) .links {
+    visibility: hidden;
   }
 
   .open-nav {
-    max-height: 380px;
+    max-height: 480px;
   }
 
   .mobile-toggle {
@@ -357,7 +522,7 @@ br {
     width: 18px;
     height: 2px;
     margin: 0 0 4px 18px;
-    background: #333333;
+    background: var(--ink);
     transition: .25s ease-in-out;
   }
 

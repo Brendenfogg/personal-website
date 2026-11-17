@@ -12,77 +12,95 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="_css/style.css">
+  <link rel="stylesheet" href="_css/style.css?v=5">
   <style>
     /* One layout for every entry: title + date, subtitle, bullets, links */
-    .entry { margin-bottom: 26px; }
+    .entry { margin-bottom: 40px; }
     .entry:last-child { margin-bottom: 0; }
-    .entry-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-    .when { color: #777777; font-size: 13px; white-space: nowrap; }
-    .sub { color: #555555; font-style: italic; }
-    .entry ul { margin: 6px 0 0; padding-left: 18px; }
+    .entry-head { display: flex; justify-content: space-between; align-items: baseline; gap: 4px 16px; flex-wrap: wrap; }
+    .entry-head .bold { color: var(--ink-strong); }
+    .when { color: var(--muted); font-size: 13px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .sub { color: var(--subtle); font-style: italic; }
+    .entry ul { margin: 8px 0 0; padding-left: 18px; }
     .entry li { padding: 2px 0; }
-    .entry-links { margin-top: 6px; font-size: 14px; }
-    .entry-links a { margin-right: 14px; }
-    .entry-links .fa { margin-right: 4px; }
-    .facts div { padding: 1px 0; }
+    .entry-links { margin-top: 8px; font-size: 14px; }
+    .entry-links a { margin-right: 16px; }
+    .entry-links .fa { margin-right: 5px; }
+    .facts { display: grid; grid-template-columns: max-content 1fr; gap: 2px 14px; margin: 18px 0 0; font-size: 14px; }
+    .facts dt { font-weight: 500; }
+    .facts dd { margin: 0; }
     .skill-list { margin: 0; padding-left: 18px; }
     .skill-list li { padding: 2px 0; }
+    .resume { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+    @media (max-width: 629px) {
+      /* Stack the date under the title so every entry reads the same way */
+      .entry-head { flex-direction: column; gap: 0; }
+    }
   </style>
 </head>
 
 <body>
+  <a class="skip" href="#main">Skip to content</a>
   <div class="container">
 
     <!-- left pane -->
-    <div class="left-pane toc">
+    <nav class="left-pane toc" aria-label="Site">
       <h1 class="name about">Brenden<br>Fogg<br></h1>
       <div class="mobile-header">
         <span class="about">Brenden Fogg</span>
       </div>
-      <div class="mobile-toggle">
+      <button class="mobile-toggle" type="button" aria-label="Menu" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
-      </div>
+      </button>
       <div class="links">
         <div class="visible-sm small-br"></div>
-        <div href="#projects" class="nav projects">Projects</div>
+        <a href="#projects" class="nav projects">Projects</a>
         <div class="small-br"></div>
-        <div href="#experience" class="nav experience">Experience</div>
+        <a href="#experience" class="nav experience">Experience</a>
         <div class="small-br"></div>
-        <div href="#leadership" class="nav leadership">Leadership</div>
+        <a href="#leadership" class="nav leadership">Leadership</a>
         <div class="small-br"></div>
-        <div href="#education" class="nav education">Education</div>
+        <a href="#education" class="nav education">Education</a>
         <div class="small-br"></div>
-        <div href="#cv" class="nav cv">CV</div>
+        <a href="#cv" class="nav cv">CV</a>
         <div class="small-br"></div>
         <a href="https://linkedin.com/in/brendenfogg">LinkedIn</a>
         <div class="small-br"></div>
         <a href="https://github.com/Brendenfogg">GitHub</a>
       </div>
-    </div>
+    </nav>
 
     <!-- right pane -->
-    <div class="right-pane main">
+    <main class="right-pane main" id="main">
 
       <!-- about -->
       <div class="anchor" id="about">
-        <img src="_images/profile.png" alt="Brenden Fogg">
-        <p>
-          Hello! I'm Brenden. I study Industrial and Operations Engineering at the
-          University of Michigan and work as an AI Analyst at Syzygy Services.
+        <img class="portrait" src="_images/profile.png" alt="Brenden Fogg" width="128" height="166">
+        <h2 class="hello">Hello! I'm Brenden.</h2>
+        <p class="intro">
+          I study Industrial and Operations Engineering at the University of Michigan
+          and work as an AI Analyst at Syzygy Services.
         </p>
         <p>
-          I like finding where operations break down and building the fix: auditing a
-          budget, designing a dashboard a team actually uses, forecasting game-day demand
-          to cut food waste, and building Order Check, an AI tool that catches restaurant
-          order mistakes before they reach the kitchen.
+          I'm interested in how businesses actually run, and how engineering can make them
+          run better. The problems I care about live in the gap between how a process is
+          supposed to work and how it works on a busy day: the extra steps, the missing
+          numbers, the decisions made on instinct because the data isn't there.
         </p>
-        <div class="facts">
-          <div><span class="bold">Email</span>:&nbsp;&nbsp;<a href="mailto:fogg.brenden@gmail.com">fogg.brenden@gmail.com</a></div>
-          <div><span class="bold">Based in</span>:&nbsp;&nbsp;Ann Arbor, Michigan</div>
-        </div>
+        <p>
+          My approach is the IOE toolkit. Start with the people doing the work, measure what
+          is really happening, then use data, optimization, and well-built software to remove
+          waste and make good decisions easier. I'm looking for work in operations, process
+          improvement, and analytics where that moves the numbers that matter: cost, time,
+          quality, and the experience of the people involved.
+        </p>
+        <dl class="facts">
+          <dt>Email</dt><dd><a class="inline" href="mailto:fogg.brenden@gmail.com">fogg.brenden@gmail.com</a></dd>
+          <dt>Based in</dt><dd>Ann Arbor, Michigan</dd>
+          <dt>Resume</dt><dd><a class="inline" href="_data/BrendenFogg-CV.pdf">PDF, updated October 2026</a></dd>
+        </dl>
       </div>
 
       <div class="br"></div>
@@ -122,7 +140,7 @@
 
         <div class="entry">
           <div class="entry-head">
-            <span class="bold">Operations dashboard and budget redesign</span>
+            <a href="projects/cgcs-hub/"><span class="bold">Operations dashboard and budget redesign</span></a>
             <span class="when">CGCS · 2026</span>
           </div>
           <div class="sub">Data analytics · financial operations</div>
@@ -130,6 +148,10 @@
             <li>Dashboard that gave an 8-person team visibility into budgets and events, with role-based views and automated event tasks.</li>
             <li>Financial audit that surfaced untracked expenses and revenue, followed by a new budget and ledger system to close the gaps.</li>
           </ul>
+          <div class="entry-links">
+            <a href="projects/cgcs-hub/"><i class="fa fa-file-text-o" aria-hidden="true"></i>Case study</a>
+            <a href="projects/cgcs-hub/#demo"><i class="fa fa-play-circle-o" aria-hidden="true"></i>Video walkthrough</a>
+          </div>
         </div>
       </div>
 
@@ -248,9 +270,13 @@
             <li>Chancellor's Honors Award, Scholastic Excellence, Phi Theta Kappa Honors Society</li>
           </ul>
         </div>
+      </div>
 
-        <div class="small-br"></div>
-        <h2 class="section" style="margin-top:18px">Skills</h2>
+      <div class="br"></div>
+
+      <!-- skills -->
+      <div class="anchor" id="skills">
+        <h2 class="section">Skills</h2>
         <div class="small-br"></div>
         <ul class="skill-list">
           <li><span class="bold">Excel</span>: financial modeling, pivot tables, data reconciliation, dashboards</li>
@@ -264,18 +290,17 @@
       <div class="anchor" id="cv">
         <h2 class="section">CV</h2>
         <div class="small-br"></div>
-        <div>
+        <div class="resume">
           <a href="_data/BrendenFogg-CV.pdf"><i class="fa fa-file-o" aria-hidden="true"></i>&nbsp; <span class="bold">Resume.pdf</span></a>
-          <span class="when">&nbsp; Updated October 2026</span>
+          <span class="when">Updated October 2026</span>
         </div>
-        <div class="br"></div>
       </div>
 
       <div class="abyss"></div>
-    </div>
+    </main>
 
   </div>
 
-  <script src="_js/main.js"></script>
+  <script src="_js/main.js?v=4"></script>
 </body>
 </html>
