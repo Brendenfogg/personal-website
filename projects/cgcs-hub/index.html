@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CGCS Command Hub · Brenden Fogg</title>
+<meta name="description" content="CGCS Command Hub: an operations dashboard that puts a civic center's email, calendar, team, and SOP in one browser tab.">
+<meta property="og:title" content="CGCS Command Hub · Brenden Fogg">
+<meta property="og:description" content="CGCS Command Hub: an operations dashboard that puts a civic center's email, calendar, team, and SOP in one browser tab.">
+<meta property="og:image" content="../../assets/cgcs-hub-video-poster.jpg">
+<meta name="theme-color" content="#f5f5f3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23141414'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='30' font-weight='700' text-anchor='middle' fill='%23f5f5f3'%3EBF%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/site.css">
+<link rel="stylesheet" href="../../css/case.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar bar--case">
+  <a class="bar__mark" href="../../">Brenden Fogg</a>
+  <nav class="bar__nav" aria-label="Main">
+    <a href="../../#skills">Skills</a>
+    <a href="../../#work" aria-current="page">Work</a>
+    <a href="../../#experience">Experience</a>
+    <a href="../../#about">About</a>
+    <a href="../../data/BrendenFogg-CV.pdf">Résumé</a>
+  </nav>
+  <a class="bar__action" href="../../#contact">Contact</a>
+</header>
+<main id="main">
+<div class="case-hero">
+<img class="case-hero__img" src="../../assets/cgcs-hub-assistant.jpg" width="926" height="530" alt="The Command Hub's AI assistant answering from the standard operating procedures.">
+<h1>CGCS Command Hub</h1>
+        <p class="lede">
+          One browser tab for running a college civic center. The Command Hub puts the director's
+          email, calendar, team, objectives, and the center's standard operating procedures on a
+          single dashboard, with an AI assistant that answers from the SOP first.
+        </p>
+        <div class="meta">
+          Center for Government and Civic Service, Austin Community College · 2026 ·
+          JavaScript, Tailwind, Cloudflare Pages, Google Calendar and Gmail APIs, Claude API
+        </div>
+</div>
+<div class="case wrap grid">
+  <nav class="case__toc" aria-label="On this page">
+    <a href="#demo">Demo</a>
+    <a href="#features">What it does</a>
+    <a href="#built">How it's built</a>
+    <a href="#budget">Budget audit</a>
+  </nav>
+  <div class="case__body">
+
+
+      <!-- demo -->
+      <div class="anchor" id="demo">
+        <h2>Demo</h2>
+        <figure>
+          <video src="../../media/cgcs-hub-demo.mp4" poster="../../assets/cgcs-hub-video-poster.jpg"
+                 width="1280" height="720" controls playsinline muted preload="metadata"
+                 aria-label="Walkthrough of the CGCS Command Hub"></video>
+          <figcaption>One-minute silent walkthrough of the main features. Names and records are fictional stand-ins.</figcaption>
+        </figure>
+      </div>
+
+      <div class="br"></div>
+
+      <!-- features -->
+      <div class="anchor" id="features">
+        <h2>What it does</h2>
+        <ul class="tight">
+          <li><span class="bold">Dashboard.</span> The day's schedule, recent email, open objectives, and weekly reports on one screen.</li>
+          <li><span class="bold">Inbox and triage.</span> Live Gmail with important mail first, plus a triage view that flags open loops: threads waiting on a reply for more than 72 hours, or from leadership.</li>
+          <li><span class="bold">AI assistant.</span> Answers in two parts: what the center's SOP says, with the section cited, then broader advice. It can also look up email, the calendar, objectives, and people.</li>
+          <li><span class="bold">Team.</span> Objectives, student employees, and task assignment with a workload view for each person.</li>
+          <li><span class="bold">Weekly reports.</span> Student employees' weekly activity reports, organized by AI into themes, problems, and follow-ups.</li>
+          <li><span class="bold">People and network.</span> A directory of contacts tagged by what they can help with, searchable by need.</li>
+          <li><span class="bold">Role-based views.</span> Separate views for the director, the deputy, and student employees, for a team of eight.</li>
+        </ul>
+      </div>
+
+      <div class="br"></div>
+
+      <!-- built -->
+      <div class="anchor" id="built">
+        <h2>How it's built</h2>
+        <ul class="tight">
+          <li>A single-page app in plain JavaScript and Tailwind, hosted on Cloudflare Pages.</li>
+          <li>Cloudflare Pages Functions keep Google sign-in alive between visits, so the director signs in once instead of every time.</li>
+          <li>AI requests go through the server, so no API key lives in the browser.</li>
+          <li>Google Calendar and Gmail connect through Google sign-in (OAuth).</li>
+        </ul>
+      </div>
+
+      <div class="br"></div>
+
+      <!-- budget -->
+      <div class="anchor" id="budget">
+        <h2>Budget audit</h2>
+        <p>
+          Alongside the dashboard, I led a financial audit of the center's annual budget. It surfaced
+          untracked expenses and revenue, and I designed a new budget and ledger system to close the gaps.
+        </p>
+        <div class="small-br"></div>
+        <div class="meta">Built during my internship at the Center for Government and Civic Service.</div>
+      </div>
+
+      
+    
+  </div>
+</div>
+</main>
+<footer class="case-foot">
+  <p>Next project</p>
+  <a class="case-foot__next" href="../order-check/">Order Check</a>
+  <ul>
+    <li><a class="link" href="../../#work">All work</a></li>
+    <li><a class="link" href="mailto:fogg.brenden@gmail.com">fogg.brenden@gmail.com</a></li>
+    <li><a class="link" href="../../data/BrendenFogg-CV.pdf">Résumé (PDF)</a></li>
+  </ul>
+</footer>
+</body>
+</html>
